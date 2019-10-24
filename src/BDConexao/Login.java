@@ -30,19 +30,19 @@ public class Login extends ViewTelaLogin implements ActionListener {
 		String user = "";
 		try {
 			String sql;
-			sql = "select tipo from Login_2019" + " where " + "usuario= '"
-					+ getUsurio() + "' and senha='" + getSenha() + "'";
+			sql = "select tipo from usuario" + " where " + "email= '" + getUsurio() + "' and senha='" + getSenha()
+					+ "'";
 			// sql = inserir comandos
 			PreparedStatement tabela = conexao.prepareStatement(sql);
 			// preparar área de execução
 			ResultSet resultado = tabela.executeQuery();
 			// executar o que na área (CTRL+F9)
 			if (resultado.next()) {
-			user = resultado.getString(1);
-			System.out.println(user);
+				user = resultado.getString(1);
+				
 			} else {
 				user = "";
-				System.out.println(user);
+				
 			}
 		} catch (SQLException erro) {
 			user = "";
@@ -55,15 +55,14 @@ public class Login extends ViewTelaLogin implements ActionListener {
 			String ok;
 			ok = Consulta_Login();
 			System.out.println(ok);
-			if (ok !="") {
-				//new Menu().show();
-				if(ok.equals("1")){
+			if (ok != "") {
+				// new Menu().show();
+				if (ok.equals("1")) {
 					setLblBD("Usuário Administrador", Color.green);
-				}else if (ok.equals("2")){
+				} else if (ok.equals("2")) {
 					setLblBD("Usuário Usuario mesmo", Color.blue);
 				}
-				
-				
+
 			} else {
 				setLblBD("Usuário ou senha inválido", Color.red);
 			}

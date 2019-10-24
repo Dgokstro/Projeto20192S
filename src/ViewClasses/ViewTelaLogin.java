@@ -100,7 +100,7 @@ public class ViewTelaLogin extends JFrame {
 		btnNewButton.setBounds(86, 231, 274, 50);
 		panel.add(btnNewButton);
 		
-		lblUsurio = new JLabel("Usu\u00E1rio");
+		lblUsurio = new JLabel("Email:");
 		lblUsurio.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblUsurio.setFont(new Font("Arial", Font.BOLD, 14));
 		lblUsurio.setBounds(22, 134, 54, 14);
