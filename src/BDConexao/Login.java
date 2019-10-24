@@ -8,8 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.swing.JOptionPane;
-
 import ViewClasses.ViewTelaLogin;
 
 public class Login extends ViewTelaLogin implements ActionListener {
