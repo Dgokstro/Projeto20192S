@@ -44,7 +44,10 @@ public class ADM_CadSenha extends JFrame {
 	private JTextField txtNome;
 	private JTextField txtEmail;
 	private JTextField txtSenha;
-
+	protected JButton btnCadCliente;
+	protected JButton btnSalvar;
+	protected JButton btnSair;
+	private JLabel lblMensagemRetorno;
 	/**
 	 * Launch the application.
 	 * 
@@ -97,7 +100,7 @@ public class ADM_CadSenha extends JFrame {
 		lblCadCliente.setBounds(27, 207, 20, 34);
 		contentPane.add(lblCadCliente);
 
-		JButton btnCadCliente = new JButton("Cadastrar Cliente");
+		btnCadCliente = new JButton("Cadastrar Cliente");
 		btnCadCliente.setHorizontalAlignment(SwingConstants.LEFT);
 		btnCadCliente.setFont(new Font("Verdana", Font.BOLD, 12));
 		btnCadCliente.setBounds(57, 216, 150, 25);
@@ -183,12 +186,12 @@ public class ADM_CadSenha extends JFrame {
 		txtSenha.setBounds(118, 207, 246, 30);
 		panel_1.add(txtSenha);
 
-		JButton btnSalvar = new JButton("SALVAR");
+		btnSalvar = new JButton("SALVAR");
 		btnSalvar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnSalvar.setBounds(166, 260, 116, 23);
 		panel_1.add(btnSalvar);
 
-		JLabel lblMensagemRetorno = new JLabel("Cadastro realizado com sucesso");
+		lblMensagemRetorno = new JLabel("");
 		lblMensagemRetorno.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblMensagemRetorno.setForeground(Color.RED);
 		lblMensagemRetorno.setHorizontalAlignment(SwingConstants.CENTER);
@@ -200,7 +203,7 @@ public class ADM_CadSenha extends JFrame {
 		lblCadSenha.setBounds(27, 252, 20, 25);
 		contentPane.add(lblCadSenha);
 
-		JButton btnSair = new JButton("Sair");
+		btnSair = new JButton("Sair");
 		btnSair.setHorizontalAlignment(SwingConstants.LEFT);
 		btnSair.setFont(new Font("Verdana", Font.BOLD, 12));
 		btnSair.setBounds(57, 288, 150, 23);
@@ -213,5 +216,10 @@ public class ADM_CadSenha extends JFrame {
 
 		setResizable(false);
 		setLocationRelativeTo(null);
+	}
+
+	public void setRetorno(String msg, Color cor) {
+		this.lblMensagemRetorno.setText(msg);
+		this.lblMensagemRetorno.setForeground(cor);
 	}
 }

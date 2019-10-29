@@ -53,7 +53,8 @@ public class ADM_CadCliente extends JFrame {
 	protected String getEmail() {
 		return txtEmail.getText();
 	}
-	protected void setRetorno(String msg,Color cor) {
+
+	protected void setRetorno(String msg, Color cor) {
 		this.lblMensagemRetorno.setText(msg);
 		this.lblMensagemRetorno.setForeground(cor);
 	}
@@ -63,7 +64,7 @@ public class ADM_CadCliente extends JFrame {
 	}
 
 	public void setTxtEmpresa(String txtEmpresa) {
-		this.txtEmpresa.setText(txtEmpresa); 
+		this.txtEmpresa.setText(txtEmpresa);
 	}
 
 	public void setTxtEndereco(String txtEndereco) {
@@ -96,8 +97,10 @@ public class ADM_CadCliente extends JFrame {
 	protected JButton btnSalvar;
 	protected JButton btnSair;
 	protected JButton btnLocalizar;
-	protected JButton btnAlterar ;
+	protected JButton btnAlterar;
 	private JLabel lblMensagemRetorno;
+	protected JButton btnCadSenha;
+	protected JButton btnCadCliente;
 	/**
 	 * Launch the application.
 	 * 
@@ -152,7 +155,7 @@ public class ADM_CadCliente extends JFrame {
 		lblCad_Cliente.setBounds(27, 207, 20, 34);
 		contentPane.add(lblCad_Cliente);
 
-		JButton btnCadCliente = new JButton("Cadastrar Cliente");
+		btnCadCliente = new JButton("Cadastrar Cliente");
 		btnCadCliente.setHorizontalAlignment(SwingConstants.LEFT);
 		btnCadCliente.setFont(new Font("Verdana", Font.BOLD, 12));
 		btnCadCliente.setBounds(57, 216, 150, 25);
@@ -163,7 +166,7 @@ public class ADM_CadCliente extends JFrame {
 		lblCadSenha.setBounds(27, 252, 20, 25);
 		contentPane.add(lblCadSenha);
 
-		JButton btnCadSenha = new JButton("Cadastrar Senha");
+		btnCadSenha = new JButton("Cadastrar Senha");
 		btnCadSenha.setHorizontalAlignment(SwingConstants.LEFT);
 		btnCadSenha.setFont(new Font("Verdana", Font.BOLD, 12));
 		btnCadSenha.setBounds(57, 254, 150, 23);
