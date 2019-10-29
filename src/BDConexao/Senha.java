@@ -39,11 +39,12 @@ public class Senha extends ADM_CadSenha implements ActionListener {
 				ResultSet resultadodpto = tabeladpto.executeQuery();
 				resultadodpto.next();
 
-				sql = "insert into usuario (empresa,email,senha,departamento,tipo,status) values ('";
+				sql = "insert into usuario (empresa,email,senha,departamento,nome,tipo,status) values ('";
 				sql += resultado.getString("id") + "','";
 				sql += getEmail() + "','";
 				sql += getSenha() + "','";
 				sql += resultadodpto.getString("id") + "','";
+				sql += getNome() + "','";
 				sql += "2','0')";
 
 				try {

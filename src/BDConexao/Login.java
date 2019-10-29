@@ -9,14 +9,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import ViewClasses.ADM_CadCliente;
+import ViewClasses.ADM_Menu;
 import ViewClasses.ViewTelaLogin;
 
 public class Login extends ViewTelaLogin implements ActionListener {
 	// Declaração dos componentes
+	
+	
 
 	Connection conexao = Conectar.getConnection();
 	// Linha obrigatória (Connection)
 	String status = Conectar.status;
+	private String nome;
 
 	public Login() {
 		super();
@@ -31,7 +35,7 @@ public class Login extends ViewTelaLogin implements ActionListener {
 		String user = "";
 		try {
 			String sql;
-			sql = "select tipo from usuario" + " where " + "email= '" + getUsurio() + "' and senha='" + getSenha()
+			sql = "select tipo,nome from usuario" + " where " + "email= '" + getUsuario() + "' and senha='" + getSenha()
 					+ "'";
 			// sql = inserir comandos
 			PreparedStatement tabela = conexao.prepareStatement(sql);
@@ -39,7 +43,8 @@ public class Login extends ViewTelaLogin implements ActionListener {
 			ResultSet resultado = tabela.executeQuery();
 			// executar o que na área (CTRL+F9)
 			if (resultado.next()) {
-				user = resultado.getString(1);
+				user = resultado.getString("tipo");
+				nome =resultado.getString("nome");
 				
 			} else {
 				user = "";
@@ -61,7 +66,7 @@ public class Login extends ViewTelaLogin implements ActionListener {
 				if (ok.equals("1")) {
 					setLblBD("Usuário Administrador", Color.green);
 					
-					new Cliente().show();
+					new ADM_Menu(nome).show();
 					dispose();
 				} else if (ok.equals("2")) {
 					setLblBD("Usuário Usuario mesmo", Color.blue);

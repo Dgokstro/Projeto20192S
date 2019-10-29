@@ -86,6 +86,9 @@ public class ADM_CadCliente extends JFrame {
 	public void setTxtEmail(String txtEmail) {
 		this.txtEmail.setText(txtEmail);
 	}
+	public void setTxtCNPJ(String txtEmail) {
+		this.txtCNPJ.setText(txtEmail);
+	}
 
 	private JTextField txtCNPJ;
 	private JTextField txtEmpresa;

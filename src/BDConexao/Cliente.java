@@ -44,7 +44,14 @@ public class Cliente extends ADM_CadCliente implements ActionListener {
 			tabela.executeUpdate();
 			setRetorno("Empresa cadastrada com sucesso", Color.green);
 			CadastrarDpto() ;
-
+			setTxtEmpresa("");
+			setTxtEndereco("");
+			setTxtCidade("");
+			setTxtUF("");
+			setTxtTelefone("");
+			setTxtEmail("");
+			setTxtCNPJ("");
+			
 		} catch (SQLException e) {
 			setRetorno(e.getMessage(), Color.red);
 			e.printStackTrace();

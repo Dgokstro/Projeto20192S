@@ -21,7 +21,7 @@ public class ViewTelaLogin extends JFrame {
 	private JPanel contentPane;
 	protected JTextField txtUsurio;
 
-	protected String getUsurio() {
+	protected String getUsuario() {
 		return txtUsurio.getText();
 	}
 
