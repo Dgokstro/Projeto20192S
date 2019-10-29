@@ -20,7 +20,7 @@ public class ViewTelaLogin extends JFrame {
 
 	private JPanel contentPane;
 	protected JTextField txtUsurio;
-	
+
 	protected String getUsurio() {
 		return txtUsurio.getText();
 	}
@@ -43,7 +43,6 @@ public class ViewTelaLogin extends JFrame {
 	 * Launch the application.
 	 */
 
-
 	/**
 	 * Create the frame.
 	 */
@@ -58,23 +57,23 @@ public class ViewTelaLogin extends JFrame {
 		setUndecorated(false);
 		setLocationRelativeTo(null);
 		setResizable(false);
-		
+
 		label = new JLabel("");
 		label.setIcon(new ImageIcon(ViewTelaLogin.class.getResource("/img/icon-usuario.png")));
 		label.setBounds(190, 137, 106, 108);
 		contentPane.add(label);
-		
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(ViewTelaLogin.class.getResource("/img/logo-bitwise.png")));
 		lblNewLabel.setBounds(91, 25, 250, 128);
 		contentPane.add(lblNewLabel);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		panel.setBounds(41, 185, 404, 367);
 		contentPane.add(panel);
 		panel.setLayout(null);
-		
+
 		txtUsurio = new JTextField();
 		txtUsurio.setHorizontalAlignment(SwingConstants.LEFT);
 		txtUsurio.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -82,7 +81,7 @@ public class ViewTelaLogin extends JFrame {
 		txtUsurio.setBounds(86, 121, 274, 40);
 		panel.add(txtUsurio);
 		txtUsurio.setColumns(10);
-		
+
 		txtSenha = new JPasswordField();
 		txtSenha.setHorizontalAlignment(SwingConstants.LEFT);
 		txtSenha.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -90,7 +89,7 @@ public class ViewTelaLogin extends JFrame {
 		txtSenha.setBounds(86, 172, 274, 40);
 		panel.add(txtSenha);
 		txtSenha.setColumns(10);
-		
+
 		btnNewButton = new JButton("ACESSAR");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -99,55 +98,52 @@ public class ViewTelaLogin extends JFrame {
 		btnNewButton.setFont(new Font("Arial", Font.BOLD, 18));
 		btnNewButton.setBounds(86, 231, 274, 50);
 		panel.add(btnNewButton);
-		
+
 		lblUsurio = new JLabel("Email:");
 		lblUsurio.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblUsurio.setFont(new Font("Arial", Font.BOLD, 14));
 		lblUsurio.setBounds(22, 134, 54, 14);
 		panel.add(lblUsurio);
-		
+
 		lblSenha = new JLabel("Senha");
 		lblSenha.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSenha.setFont(new Font("Arial", Font.BOLD, 14));
 		lblSenha.setBounds(22, 185, 54, 14);
 		panel.add(lblSenha);
-		
+
 		lblNewLabel_1 = new JLabel("Bem-Vindo");
 		lblNewLabel_1.setForeground(Color.GRAY);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 18));
 		lblNewLabel_1.setBounds(10, 73, 384, 27);
 		panel.add(lblNewLabel_1);
-		
+
 		lblEsqueciMinhaSenha = new JLabel("Esqueci minha senha");
 		lblEsqueciMinhaSenha.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEsqueciMinhaSenha.setForeground(Color.GRAY);
 		lblEsqueciMinhaSenha.setFont(new Font("Arial", Font.PLAIN, 14));
 		lblEsqueciMinhaSenha.setBounds(89, 293, 271, 27);
 		panel.add(lblEsqueciMinhaSenha);
-		
-		
+
 		lblBD = new JLabel("");
 		lblBD.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBD.setForeground(Color.GRAY);
 		lblBD.setFont(new Font("Arial", Font.PLAIN, 14));
 		lblBD.setBounds(89, 293, 271, 70);
 		panel.add(lblBD);
-		
-		
-		lblSistemaGerenciadorAdministrativo = new JLabel("Sistema Gerenciador Administrativo BitWise - Vers\u00E3o 1.0.0");
+
+		lblSistemaGerenciadorAdministrativo = new JLabel(
+				"Sistema Gerenciador Administrativo BitWise - Vers\u00E3o 1.0.0");
 		lblSistemaGerenciadorAdministrativo.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblSistemaGerenciadorAdministrativo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSistemaGerenciadorAdministrativo.setBounds(20, 571, 435, 14);
 		contentPane.add(lblSistemaGerenciadorAdministrativo);
-		
-		
 
 	}
 
 	public void setLblBD(String texto, Color cor) {
-		
+
 		this.lblBD.setForeground(cor);
-		this.lblBD.setText(texto) ;
+		this.lblBD.setText(texto);
 	}
 }

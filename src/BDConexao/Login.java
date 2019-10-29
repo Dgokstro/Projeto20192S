@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import ViewClasses.ADM_CadCliente;
 import ViewClasses.ViewTelaLogin;
 
 public class Login extends ViewTelaLogin implements ActionListener {
@@ -26,7 +27,7 @@ public class Login extends ViewTelaLogin implements ActionListener {
 
 	}
 
-	String Consulta_Login() {
+	private String Consulta_Login() {
 		String user = "";
 		try {
 			String sql;
@@ -59,6 +60,9 @@ public class Login extends ViewTelaLogin implements ActionListener {
 				// new Menu().show();
 				if (ok.equals("1")) {
 					setLblBD("Usuário Administrador", Color.green);
+					
+					new Cliente().show();
+					dispose();
 				} else if (ok.equals("2")) {
 					setLblBD("Usuário Usuario mesmo", Color.blue);
 				}
