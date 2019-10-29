@@ -93,32 +93,30 @@ public class Cliente extends ADM_CadCliente implements ActionListener {
 			ResultSet resultado = tabela.executeQuery();
 
 			if (resultado.next()) {
-				sql = "update empresa set ";
+				
 				if (!"".equals(getEmpresa())) {
-					sql+="nome='"+getEmpresa()+"'";
+					sql="update empresa set nome='"+getEmpresa()+"'where cnpj = '"+getCNPJ()+"'";
+					executasql(sql);
 				}if (!"".equals(getEndereco())) {
-					sql+="endereco='"+getEndereco()+"'";
+					sql="update empresa set endereco='"+getEndereco()+"'where cnpj = '"+getCNPJ()+"'";
+					executasql(sql);
 				}if (!"".equals(getCidade())) {
-					sql+="cidade='"+getCidade()+"'";
+					sql="update empresa set Cidade='"+getCidade()+"'where cnpj = '"+getCNPJ()+"'";
+					executasql(sql);
 				}if (!"".equals(getUF())) {
-					sql+="uf='"+getUF()+"'";
+					sql="update empresa set uf='"+getUF()+"'where cnpj = '"+getCNPJ()+"'";
+					executasql(sql);
 				}if (!"".equals(getTelefone())) {
-					sql+="telefone='"+getTelefone()+"'";
+					sql="update empresa set telefone='"+getTelefone()+"'where cnpj = '"+getCNPJ()+"'";
+					executasql(sql);
 				}if (!"".equals(getEmail())) {
-					sql+="email='"+getEmail()+"'";
+					sql="update empresa set email='"+getEmail()+"'where cnpj = '"+getCNPJ()+"'";
+					executasql(sql);
 				}
-				sql+= "where cnpj = '"+getCNPJ()+"'";
 				
 				
-				try {
-					tabela = conexao.prepareStatement(sql);
-					tabela.executeUpdate();
-					setRetorno("Empresa Alterada com sucesso",Color.green);
-					
-				} catch (SQLException e) {
-					setRetorno(e.getMessage(),Color.red);
-					e.printStackTrace();
-				}
+				
+				
 				
 			} else {
 				setRetorno("CNPJ não encontrado",Color.red);
@@ -130,7 +128,20 @@ public class Cliente extends ADM_CadCliente implements ActionListener {
 		
 	}
 	
-	
+	public void executasql(String sql) throws SQLException {
+		
+		PreparedStatement tabela = conexao.prepareStatement(sql);
+		
+		try {
+			tabela = conexao.prepareStatement(sql);
+			tabela.executeUpdate();
+			setRetorno("Empresa Alterada com sucesso",Color.green);
+			
+		} catch (SQLException e) {
+			setRetorno(e.getMessage(),Color.red);
+			e.printStackTrace();
+		}
+	}
 	@Override
 	public void actionPerformed(ActionEvent acao) {
 		// TODO Auto-generated method stub

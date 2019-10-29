@@ -30,12 +30,12 @@ public class ViewTelaLogin extends JFrame {
 	}
 
 	private JTextField txtSenha;
-	protected JButton btnNewButton;
+	protected JButton btnLogin;
 	protected JLabel lblUsurio;
 	private JLabel lblSenha;
 	private JLabel lblNewLabel_1;
 	private JLabel lblEsqueciMinhaSenha;
-	private JLabel lblBD;
+	private JLabel lblRetorno;
 	private JLabel label;
 	private JLabel lblSistemaGerenciadorAdministrativo;
 
@@ -90,14 +90,14 @@ public class ViewTelaLogin extends JFrame {
 		panel.add(txtSenha);
 		txtSenha.setColumns(10);
 
-		btnNewButton = new JButton("ACESSAR");
-		btnNewButton.addActionListener(new ActionListener() {
+		btnLogin = new JButton("ACESSAR");
+		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setFont(new Font("Arial", Font.BOLD, 18));
-		btnNewButton.setBounds(86, 231, 274, 50);
-		panel.add(btnNewButton);
+		btnLogin.setFont(new Font("Arial", Font.BOLD, 18));
+		btnLogin.setBounds(86, 231, 274, 50);
+		panel.add(btnLogin);
 
 		lblUsurio = new JLabel("Email:");
 		lblUsurio.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -125,12 +125,12 @@ public class ViewTelaLogin extends JFrame {
 		lblEsqueciMinhaSenha.setBounds(89, 293, 271, 27);
 		panel.add(lblEsqueciMinhaSenha);
 
-		lblBD = new JLabel("");
-		lblBD.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBD.setForeground(Color.GRAY);
-		lblBD.setFont(new Font("Arial", Font.PLAIN, 14));
-		lblBD.setBounds(89, 293, 271, 70);
-		panel.add(lblBD);
+		lblRetorno = new JLabel("");
+		lblRetorno.setHorizontalAlignment(SwingConstants.CENTER);
+		lblRetorno.setForeground(Color.GRAY);
+		lblRetorno.setFont(new Font("Arial", Font.PLAIN, 14));
+		lblRetorno.setBounds(89, 293, 271, 70);
+		panel.add(lblRetorno);
 
 		lblSistemaGerenciadorAdministrativo = new JLabel(
 				"Sistema Gerenciador Administrativo BitWise - Vers\u00E3o 1.0.0");
@@ -143,7 +143,7 @@ public class ViewTelaLogin extends JFrame {
 
 	public void setLblBD(String texto, Color cor) {
 
-		this.lblBD.setForeground(cor);
-		this.lblBD.setText(texto);
+		this.lblRetorno.setForeground(cor);
+		this.lblRetorno.setText(texto);
 	}
 }

@@ -21,7 +21,7 @@ public class Login extends ViewTelaLogin implements ActionListener {
 	public Login() {
 		super();
 
-		btnNewButton.addActionListener(this);
+		btnLogin.addActionListener(this);
 		// JOptionPane.showMessageDialog(null, status);
 		setLblBD(status, Color.gray);
 
@@ -52,10 +52,10 @@ public class Login extends ViewTelaLogin implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent acao) {
-		if (acao.getSource() == btnNewButton) {
+		if (acao.getSource() == btnLogin) {
 			String ok;
 			ok = Consulta_Login();
-			System.out.println(ok);
+			
 			if (ok != "") {
 				// new Menu().show();
 				if (ok.equals("1")) {
