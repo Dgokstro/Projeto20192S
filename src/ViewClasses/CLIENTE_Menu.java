@@ -6,21 +6,30 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import BDConexao.Funcionario;
+import BDConexao.Senha;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.UIManager;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 
-public class CLIENTE_Menu extends JFrame {
+public class CLIENTE_Menu extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
+	protected JButton btnCadFunc;
+	private String idempresa="";
 
 	/**
 	 * Launch the application.
@@ -41,7 +50,9 @@ public class CLIENTE_Menu extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CLIENTE_Menu() {
+	public CLIENTE_Menu(String Nome, String Empresa,String idempresa) {
+		this.idempresa=idempresa;
+		
 		setTitle("BitWise - \u00C1rea do Cliente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -83,12 +94,13 @@ public class CLIENTE_Menu extends JFrame {
 		lblCad_Cliente.setBounds(27, 216, 20, 25);
 		contentPane.add(lblCad_Cliente);
 
-		JButton btnCadFunc = new JButton("Cadastrar Funcion\u00E1rio");
+		btnCadFunc = new JButton("Cadastrar Funcion\u00E1rio");
 		btnCadFunc.setHorizontalAlignment(SwingConstants.LEFT);
 		btnCadFunc.setFont(new Font("Verdana", Font.BOLD, 12));
 		btnCadFunc.setBounds(57, 216, 185, 25);
 		contentPane.add(btnCadFunc);
-
+		btnCadFunc.addActionListener(this);
+		
 		JButton btnCadQuestionario = new JButton("Question\u00E1rio");
 		btnCadQuestionario.setHorizontalAlignment(SwingConstants.LEFT);
 		btnCadQuestionario.setFont(new Font("Verdana", Font.BOLD, 12));
@@ -100,7 +112,7 @@ public class CLIENTE_Menu extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 
-		JLabel lbl_Boas_Vindas = new JLabel("Ol\u00E1, <nome> seja bem-vindo. ");
+		JLabel lbl_Boas_Vindas = new JLabel("Ol\u00E1, "+Nome+" seja bem-vindo. ");
 		lbl_Boas_Vindas.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_Boas_Vindas.setFont(new Font("Verdana", Font.BOLD, 14));
 		lbl_Boas_Vindas.setBounds(88, 119, 306, 14);
@@ -123,7 +135,7 @@ public class CLIENTE_Menu extends JFrame {
 		lblSuporte.setBounds(88, 375, 306, 14);
 		panel.add(lblSuporte);
 
-		JLabel lbl_Empresa = new JLabel("<EMPRESA>");
+		JLabel lbl_Empresa = new JLabel(Empresa);
 		lbl_Empresa.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_Empresa.setFont(new Font("Verdana", Font.BOLD, 14));
 		lbl_Empresa.setBounds(88, 86, 306, 14);
@@ -160,5 +172,21 @@ public class CLIENTE_Menu extends JFrame {
 
 		setResizable(false);
 		setLocationRelativeTo(null);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent acao) {
+		// TODO Auto-generated method stub
+		if (acao.getSource() == btnCadFunc) {
+			try {
+				new Funcionario(idempresa).show();
+				dispose();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			dispose();
+		}
+		
 	}
 }

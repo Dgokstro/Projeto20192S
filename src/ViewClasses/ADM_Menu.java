@@ -35,6 +35,7 @@ public class ADM_Menu extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	private JButton btnCadastrarSenha;
 	private JButton btnCadastrarCliente;
+	private JButton btnSair;
 
 	
 	
@@ -145,11 +146,12 @@ public class ADM_Menu extends JFrame implements ActionListener {
 		lblCadSenha.setBounds(27, 252, 20, 25);
 		contentPane.add(lblCadSenha);
 
-		JButton btnSair = new JButton("Sair");
+		btnSair = new JButton("Sair");
 		btnSair.setHorizontalAlignment(SwingConstants.LEFT);
 		btnSair.setFont(new Font("Verdana", Font.BOLD, 12));
 		btnSair.setBounds(57, 288, 150, 23);
 		contentPane.add(btnSair);
+		btnSair.addActionListener(this);
 
 		JLabel lblSair = new JLabel("");
 		lblSair.setIcon(new ImageIcon(ADM_Menu.class.getResource("/img/iconsair.png")));
@@ -170,6 +172,10 @@ public class ADM_Menu extends JFrame implements ActionListener {
 		}
 		if (acao.getSource() == btnCadastrarCliente) {
 			new Cliente().show();
+			dispose();
+		}
+		if (acao.getSource() == btnSair) {
+
 			dispose();
 		}
 	}

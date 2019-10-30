@@ -7,6 +7,7 @@ create table usuario(
     status int,
     senha varchar (20),
     tipo int,
-    departamento int
+    departamento int,
+    usuario varchar(60)
 
 );
