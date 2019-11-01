@@ -19,7 +19,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-public class CLIENTE_CadFunc extends JFrame {
+public class CLIENTE_CadDpto extends JFrame {
 
 	private JPanel contentPane;
 
@@ -108,7 +108,7 @@ public class CLIENTE_CadFunc extends JFrame {
 	 * catch (Exception e) { e.printStackTrace(); } } }); }
 	 */
 
-	public CLIENTE_CadFunc() {
+	public CLIENTE_CadDpto() {
 		setTitle("BitWise - Cadastramento Funcion\u00E1rio");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -133,7 +133,7 @@ public class CLIENTE_CadFunc extends JFrame {
 		contentPane.add(labelRodape);
 
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(CLIENTE_CadFunc.class.getResource("/img/logo-bitwise-reduzido.png")));
+		label.setIcon(new ImageIcon(CLIENTE_CadDpto.class.getResource("/img/logo-bitwise-reduzido.png")));
 		label.setBounds(27, 21, 200, 102);
 		contentPane.add(label);
 
@@ -157,16 +157,16 @@ public class CLIENTE_CadFunc extends JFrame {
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 
-		JLabel lbl_CadFuncionario = new JLabel("CADASTRAR FUNCIONARIO");
+		JLabel lbl_CadFuncionario = new JLabel("CADASTRAR DEPARTAMENTO");
 		lbl_CadFuncionario.setBounds(118, 36, 246, 14);
 		panel_1.add(lbl_CadFuncionario);
 		lbl_CadFuncionario.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_CadFuncionario.setFont(new Font("Verdana", Font.BOLD, 14));
 
 		JLabel label_2 = new JLabel("");
-		label_2.setBounds(106, 25, 25, 34);
+		label_2.setBounds(100, 25, 25, 34);
 		panel_1.add(label_2);
-		label_2.setIcon(new ImageIcon(CLIENTE_CadFunc.class.getResource("/img/icon-cliente_menu_cadfunc_azul.png")));
+		label_2.setIcon(new ImageIcon(CLIENTE_CadDpto.class.getResource("/img/icon-cliente_menu_cadfunc_azul.png")));
 		label_2.setFont(new Font("Verdana", Font.BOLD, 14));
 
 		JLabel lblEmpresa = new JLabel("Empresa:");
@@ -183,33 +183,33 @@ public class CLIENTE_CadFunc extends JFrame {
 		lblFuncionario.setBounds(34, 131, 80, 20);
 		panel_1.add(lblFuncionario);
 
-		JLabel lblDepartamento = new JLabel("Setor:");
-		lblDepartamento.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblDepartamento.setForeground(Color.GRAY);
-		lblDepartamento.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblDepartamento.setBounds(34, 172, 80, 20);
-		panel_1.add(lblDepartamento);
-
-		JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEmail.setForeground(Color.GRAY);
-		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblEmail.setBounds(34, 210, 80, 20);
-		panel_1.add(lblEmail);
-
-		JLabel lblSenha = new JLabel("Senha:");
-		lblSenha.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblSenha.setForeground(Color.GRAY);
-		lblSenha.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblSenha.setBounds(34, 249, 80, 20);
-		panel_1.add(lblSenha);
-
-		JLabel lblStatus = new JLabel("Status:");
-		lblStatus.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblStatus.setForeground(Color.GRAY);
-		lblStatus.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblStatus.setBounds(34, 291, 80, 20);
-		panel_1.add(lblStatus);
+//		JLabel lblDepartamento = new JLabel("Setor:");
+//		lblDepartamento.setHorizontalAlignment(SwingConstants.RIGHT);
+//		lblDepartamento.setForeground(Color.GRAY);
+//		lblDepartamento.setFont(new Font("Tahoma", Font.BOLD, 14));
+//		lblDepartamento.setBounds(34, 172, 80, 20);
+//		panel_1.add(lblDepartamento);
+//
+//		JLabel lblEmail = new JLabel("Email:");
+//		lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
+//		lblEmail.setForeground(Color.GRAY);
+//		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 14));
+//		lblEmail.setBounds(34, 210, 80, 20);
+//		panel_1.add(lblEmail);
+//
+//		JLabel lblSenha = new JLabel("Senha:");
+//		lblSenha.setHorizontalAlignment(SwingConstants.RIGHT);
+//		lblSenha.setForeground(Color.GRAY);
+//		lblSenha.setFont(new Font("Tahoma", Font.BOLD, 14));
+//		lblSenha.setBounds(34, 249, 80, 20);
+//		panel_1.add(lblSenha);
+//
+//		JLabel lblStatus = new JLabel("Status:");
+//		lblStatus.setHorizontalAlignment(SwingConstants.RIGHT);
+//		lblStatus.setForeground(Color.GRAY);
+//		lblStatus.setFont(new Font("Tahoma", Font.BOLD, 14));
+//		lblStatus.setBounds(34, 291, 80, 20);
+//		panel_1.add(lblStatus);
 
 		txtEmpresa = new JTextField();
 		txtEmpresa.setBounds(118, 88, 246, 30);
@@ -224,35 +224,35 @@ public class CLIENTE_CadFunc extends JFrame {
 
 //		txtDepartamento = new JTextField();
 //		txtDepartamento.setColumns(10);
-		comboDepartamento = new JComboBox();
-		comboDepartamento.setBounds(118, 169, 246, 30);
-		panel_1.add(comboDepartamento);
-		comboDepartamento.setModel(new DefaultComboBoxModel<>());
-
-		txtEmail = new JTextField();
-		txtEmail.setColumns(10);
-		txtEmail.setBounds(118, 207, 246, 30);
-		panel_1.add(txtEmail);
-
-		txtSenha = new JTextField();
-		txtSenha.setColumns(10);
-		txtSenha.setBounds(118, 246, 246, 30);
-		panel_1.add(txtSenha);
+//		comboDepartamento = new JComboBox();
+//		comboDepartamento.setBounds(118, 169, 246, 30);
+//		panel_1.add(comboDepartamento);
+//		comboDepartamento.setModel(new DefaultComboBoxModel<>());
+//
+//		txtEmail = new JTextField();
+//		txtEmail.setColumns(10);
+//		txtEmail.setBounds(118, 207, 246, 30);
+//		panel_1.add(txtEmail);
+//
+//		txtSenha = new JTextField();
+//		txtSenha.setColumns(10);
+//		txtSenha.setBounds(118, 246, 246, 30);
+//		panel_1.add(txtSenha);
 
 		btnSalvar = new JButton("SALVAR");
 		btnSalvar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnSalvar.setBounds(28, 380, 116, 23);
 		panel_1.add(btnSalvar);
 
-		btnAlterar = new JButton("ALTERAR");
-		btnAlterar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnAlterar.setBounds(151, 380, 116, 23);
-		panel_1.add(btnAlterar);
-
-		btnLozalizar = new JButton("LOCALIZAR");
-		btnLozalizar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnLozalizar.setBounds(272, 380, 116, 23);
-		panel_1.add(btnLozalizar);
+//		btnAlterar = new JButton("ALTERAR");
+//		btnAlterar.setFont(new Font("Tahoma", Font.BOLD, 14));
+//		btnAlterar.setBounds(151, 380, 116, 23);
+//		panel_1.add(btnAlterar);
+//
+//		btnLozalizar = new JButton("LOCALIZAR");
+//		btnLozalizar.setFont(new Font("Tahoma", Font.BOLD, 14));
+//		btnLozalizar.setBounds(272, 380, 116, 23);
+//		panel_1.add(btnLozalizar);
 
 		lblMensagemRetorno = new JLabel("");
 		lblMensagemRetorno.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -261,14 +261,14 @@ public class CLIENTE_CadFunc extends JFrame {
 		lblMensagemRetorno.setBounds(52, 414, 330, 44);
 		panel_1.add(lblMensagemRetorno);
 
-		comboBoxStatus = new JComboBox();
-		comboBoxStatus.setBounds(118, 288, 246, 30);
-		panel_1.add(comboBoxStatus);
-		comboBoxStatus.setModel(new DefaultComboBoxModel(new String[] { "Ativo", "Inativo" }));
+//		comboBoxStatus = new JComboBox();
+//		comboBoxStatus.setBounds(118, 288, 246, 30);
+//		panel_1.add(comboBoxStatus);
+//		comboBoxStatus.setModel(new DefaultComboBoxModel(new String[] { "Ativo", "Inativo" }));
 
 		JLabel lblCadFuncionario = new JLabel("");
 		lblCadFuncionario
-				.setIcon(new ImageIcon(CLIENTE_CadFunc.class.getResource("/img/icon-cliente_menu_cadfunc_azul.png")));
+				.setIcon(new ImageIcon(CLIENTE_CadDpto.class.getResource("/img/icon-cliente_menu_cadfunc_cinza.png")));
 		lblCadFuncionario.setFont(new Font("Verdana", Font.BOLD, 14));
 		lblCadFuncionario.setBounds(27, 217, 20, 25);
 		contentPane.add(lblCadFuncionario);
@@ -281,7 +281,7 @@ public class CLIENTE_CadFunc extends JFrame {
 
 		JLabel lblQuestionario = new JLabel("");
 		lblQuestionario.setIcon(
-				new ImageIcon(CLIENTE_CadFunc.class.getResource("/img/icon-cliente_menu_cadquestionario_cinza.png")));
+				new ImageIcon(CLIENTE_CadDpto.class.getResource("/img/icon-cliente_menu_cadquestionario_cinza.png")));
 		lblQuestionario.setBounds(27, 253, 20, 25);
 		contentPane.add(lblQuestionario);
 
@@ -293,7 +293,7 @@ public class CLIENTE_CadFunc extends JFrame {
 
 		JLabel lblRelatorio = new JLabel("");
 		lblRelatorio.setIcon(
-				new ImageIcon(CLIENTE_CadFunc.class.getResource("/img/icon-cliente_menu_relatorio_cinza.png")));
+				new ImageIcon(CLIENTE_CadDpto.class.getResource("/img/icon-cliente_menu_relatorio_cinza.png")));
 		lblRelatorio.setBounds(27, 287, 20, 25);
 		contentPane.add(lblRelatorio);
 
@@ -305,7 +305,7 @@ public class CLIENTE_CadFunc extends JFrame {
 		
 		JLabel lblMenuDepartamento = new JLabel("");
 		lblMenuDepartamento.setIcon(
-				new ImageIcon(CLIENTE_CadFunc.class.getResource("/img/icon-cliente_menu_cadquestionario_cinza.png")));
+				new ImageIcon(CLIENTE_CadDpto.class.getResource("/img/icon-cliente_menu_cadquestionario_cinza.png")));
 		lblMenuDepartamento.setBounds(27, 323, 20, 25);
 		contentPane.add(lblMenuDepartamento);
 
@@ -322,7 +322,7 @@ public class CLIENTE_CadFunc extends JFrame {
 		contentPane.add(btnSair);
 
 		JLabel lblSair = new JLabel("");
-		lblSair.setIcon(new ImageIcon(CLIENTE_CadFunc.class.getResource("/img/iconsair.png")));
+		lblSair.setIcon(new ImageIcon(CLIENTE_CadDpto.class.getResource("/img/iconsair.png")));
 		lblSair.setBounds(27, 357, 20, 25);
 		contentPane.add(lblSair);
 

@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import BDConexao.Departamento;
 import BDConexao.Funcionario;
 import BDConexao.Senha;
 
@@ -29,30 +30,24 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	protected JButton btnCadFunc;
-	private String idempresa="";
+	protected JButton btnMenuDepartamento;
+	private String idempresa = "";
 
 	/**
 	 * Launch the application.
-	 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CLIENTE_Menu frame = new CLIENTE_Menu();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
+	 * 
+	 * public static void main(String[] args) { EventQueue.invokeLater(new
+	 * Runnable() { public void run() { try { CLIENTE_Menu frame = new
+	 * CLIENTE_Menu(); frame.setVisible(true); } catch (Exception e) {
+	 * e.printStackTrace(); } } }); }
+	 */
 
 	/**
 	 * Create the frame.
 	 */
-	public CLIENTE_Menu(String Nome, String Empresa,String idempresa) {
-		this.idempresa=idempresa;
-		
+	public CLIENTE_Menu(String Nome, String Empresa, String idempresa) {
+		this.idempresa = idempresa;
+
 		setTitle("BitWise - \u00C1rea do Cliente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -100,7 +95,7 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 		btnCadFunc.setBounds(57, 216, 185, 25);
 		contentPane.add(btnCadFunc);
 		btnCadFunc.addActionListener(this);
-		
+
 		JButton btnCadQuestionario = new JButton("Question\u00E1rio");
 		btnCadQuestionario.setHorizontalAlignment(SwingConstants.LEFT);
 		btnCadQuestionario.setFont(new Font("Verdana", Font.BOLD, 12));
@@ -112,7 +107,7 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 		contentPane.add(panel);
 		panel.setLayout(null);
 
-		JLabel lbl_Boas_Vindas = new JLabel("Ol\u00E1, "+Nome+" seja bem-vindo. ");
+		JLabel lbl_Boas_Vindas = new JLabel("Ol\u00E1, " + Nome + " seja bem-vindo. ");
 		lbl_Boas_Vindas.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_Boas_Vindas.setFont(new Font("Verdana", Font.BOLD, 14));
 		lbl_Boas_Vindas.setBounds(88, 119, 306, 14);
@@ -159,15 +154,28 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 		lblRelatorio.setBounds(27, 286, 20, 25);
 		contentPane.add(lblRelatorio);
 
+		JLabel lblMenuDepartamento = new JLabel("");
+		lblMenuDepartamento.setIcon(
+				new ImageIcon(CLIENTE_CadFunc.class.getResource("/img/icon-cliente_menu_cadquestionario_cinza.png")));
+		lblMenuDepartamento.setBounds(27, 323, 20, 25);
+		contentPane.add(lblMenuDepartamento);
+
+		btnMenuDepartamento = new JButton("Departamento");
+		btnMenuDepartamento.setHorizontalAlignment(SwingConstants.LEFT);
+		btnMenuDepartamento.setFont(new Font("Verdana", Font.BOLD, 12));
+		btnMenuDepartamento.setBounds(57, 323, 185, 23);
+		contentPane.add(btnMenuDepartamento);
+		btnMenuDepartamento.addActionListener(this);
+
 		JButton btnSair = new JButton("Sair");
 		btnSair.setHorizontalAlignment(SwingConstants.LEFT);
 		btnSair.setFont(new Font("Verdana", Font.BOLD, 12));
-		btnSair.setBounds(57, 322, 185, 23);
+		btnSair.setBounds(57, 357, 185, 23);
 		contentPane.add(btnSair);
 
 		JLabel lblSair = new JLabel("");
 		lblSair.setIcon(new ImageIcon(CLIENTE_Menu.class.getResource("/img/iconsair.png")));
-		lblSair.setBounds(27, 322, 20, 25);
+		lblSair.setBounds(27, 357, 20, 25);
 		contentPane.add(lblSair);
 
 		setResizable(false);
@@ -187,6 +195,16 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 			}
 			dispose();
 		}
-		
+		if (acao.getSource() == btnMenuDepartamento) {
+
+			try {
+				new Departamento(idempresa).show();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			dispose();
+		}
+
 	}
 }
