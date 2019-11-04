@@ -46,7 +46,7 @@ public class Funcionario extends CLIENTE_CadFunc implements ActionListener {
 		sql += idempresa + "','";
 		sql += getEmail() + "','";
 		sql += getiddpto(getSetor()) + "','";
-		sql += "3','";
+		sql += getTipoUser()+"','";
 		sql += getStatus() + "','";
 		sql += getSenha() + "')";
 
@@ -112,7 +112,7 @@ public class Funcionario extends CLIENTE_CadFunc implements ActionListener {
 
 		try {
 			String sql;
-			sql = "select a.nome,b.descricao from usuario a inner join departamento b on a.departamento = b.id"
+			sql = "select a.nome,b.descricao,a.status,a.tipo from usuario a inner join departamento b on a.departamento = b.id"
 					+ " where " + "a.email= '" + getEmail() + "' and a.empresa='" + idempresa + "'";
 
 			PreparedStatement tabela = conexao.prepareStatement(sql);
@@ -123,6 +123,7 @@ public class Funcionario extends CLIENTE_CadFunc implements ActionListener {
 				setTxtNome(resultado.getString("nome"));
 				setRetorno("", Color.red);
 				settxtDepartamento(resultado.getString("descricao"));
+				setTipoUser(resultado.getInt("tipo"));
 
 			} else {
 				setRetorno("Email não encontrado", Color.red);
@@ -163,6 +164,11 @@ public class Funcionario extends CLIENTE_CadFunc implements ActionListener {
 							+ "'";
 					executasql(sql);
 				}
+				if (!"".equals(getTipoUser())) {
+					sql = "update usuario set tipo='" + getTipoUser()+ "'where email = '" + getEmail()
+					+ "'";
+			executasql(sql);
+		}
 
 				setRetorno("Colaborador Alterado com sucesso", Color.green);
 				setTxtEmail("");

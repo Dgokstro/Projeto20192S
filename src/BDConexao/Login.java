@@ -22,6 +22,7 @@ public class Login extends ViewTelaLogin implements ActionListener {
 	private String nome;
 	private String empresa;
 	private String idempresa;
+	private String idusuario;
 
 	public Login() {
 		super();
@@ -36,7 +37,7 @@ public class Login extends ViewTelaLogin implements ActionListener {
 		String user = "";
 		try {
 			String sql;
-			sql = "select a.tipo,a.nome,b.nome as empresa,b.id as idempresa from usuario a inner join empresa b on a.empresa=b.id where a.email= '" + getUsuario() + "' and a.senha='" + getSenha()
+			sql = "select a.tipo,a.nome,b.nome as empresa,b.id as idempresa,a.id as idusuario from usuario a inner join empresa b on a.empresa=b.id where a.email= '" + getUsuario() + "' and a.senha='" + getSenha()
 					+ "'";
 			// sql = inserir comandos
 			PreparedStatement tabela = conexao.prepareStatement(sql);
@@ -48,6 +49,7 @@ public class Login extends ViewTelaLogin implements ActionListener {
 				nome = resultado.getString("nome");
 				empresa = resultado.getString("empresa");
 				idempresa = resultado.getString("idempresa");
+				idusuario = resultado.getString("idusuario");
 
 			} else {
 				user = "";
@@ -74,7 +76,7 @@ public class Login extends ViewTelaLogin implements ActionListener {
 				} else if (ok.equals("2")) {
 					setLblBD("Usuário Usuario mesmo", Color.blue);
 
-					new CLIENTE_Menu(nome,empresa,idempresa).show();
+					new CLIENTE_Menu(nome,empresa,idempresa,idusuario).show();
 					dispose();
 				}
 

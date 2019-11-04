@@ -49,6 +49,15 @@ public class CLIENTE_CadFunc extends JFrame {
 
 	}
 
+	protected int getTipoUser() {
+
+		return comboTipoUser.getSelectedIndex()+2;
+
+	}
+	public void setTipoUser(int TipoUser) {
+		this.comboTipoUser.setSelectedIndex(TipoUser-2);
+	}
+	
 	protected void setRetorno(String msg, Color cor) {
 		this.lblMensagemRetorno.setText(msg);
 		this.lblMensagemRetorno.setForeground(cor);
@@ -87,6 +96,7 @@ public class CLIENTE_CadFunc extends JFrame {
 	private JTextField txtEmail;
 	private JTextField txtSenha;
 	protected JComboBox comboDepartamento;
+	protected JComboBox comboTipoUser;
 	private JComboBox comboBoxStatus;
 	private JLabel lblMensagemRetorno;
 	protected JButton btnSalvar;
@@ -210,6 +220,13 @@ public class CLIENTE_CadFunc extends JFrame {
 		lblStatus.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblStatus.setBounds(34, 291, 80, 20);
 		panel_1.add(lblStatus);
+		
+		JLabel lblTipoUser = new JLabel("Tipo:");
+		lblTipoUser.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblTipoUser.setForeground(Color.GRAY);
+		lblTipoUser.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblTipoUser.setBounds(34, 336, 80, 20);
+		panel_1.add(lblTipoUser);
 
 		txtEmpresa = new JTextField();
 		txtEmpresa.setBounds(118, 88, 246, 30);
@@ -241,17 +258,17 @@ public class CLIENTE_CadFunc extends JFrame {
 
 		btnSalvar = new JButton("SALVAR");
 		btnSalvar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnSalvar.setBounds(28, 380, 116, 23);
+		btnSalvar.setBounds(28, 400, 116, 23);
 		panel_1.add(btnSalvar);
 
 		btnAlterar = new JButton("ALTERAR");
 		btnAlterar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnAlterar.setBounds(151, 380, 116, 23);
+		btnAlterar.setBounds(151, 400, 116, 23);
 		panel_1.add(btnAlterar);
 
 		btnLozalizar = new JButton("LOCALIZAR");
 		btnLozalizar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnLozalizar.setBounds(272, 380, 116, 23);
+		btnLozalizar.setBounds(272, 400, 116, 23);
 		panel_1.add(btnLozalizar);
 
 		lblMensagemRetorno = new JLabel("");
@@ -265,6 +282,11 @@ public class CLIENTE_CadFunc extends JFrame {
 		comboBoxStatus.setBounds(118, 288, 246, 30);
 		panel_1.add(comboBoxStatus);
 		comboBoxStatus.setModel(new DefaultComboBoxModel(new String[] { "Ativo", "Inativo" }));
+		
+		comboTipoUser = new JComboBox();
+		comboTipoUser.setBounds(118, 333, 246, 30);
+		panel_1.add(comboTipoUser);
+		comboTipoUser.setModel(new DefaultComboBoxModel(new String[] {"Administrador", "Gerente", "Funcionario" }));
 
 		JLabel lblCadFuncionario = new JLabel("");
 		lblCadFuncionario

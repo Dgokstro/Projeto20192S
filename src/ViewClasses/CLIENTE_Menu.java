@@ -32,6 +32,8 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 	protected JButton btnCadFunc;
 	protected JButton btnMenuDepartamento;
 	private String idempresa = "";
+	private JButton btnCadQuestionario ;
+	private String idusuario;
 
 	/**
 	 * Launch the application.
@@ -45,9 +47,9 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 	/**
 	 * Create the frame.
 	 */
-	public CLIENTE_Menu(String Nome, String Empresa, String idempresa) {
+	public CLIENTE_Menu(String Nome, String Empresa, String idempresa,String idusuario) {
 		this.idempresa = idempresa;
-
+		this.idusuario=idusuario;
 		setTitle("BitWise - \u00C1rea do Cliente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -96,11 +98,12 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 		contentPane.add(btnCadFunc);
 		btnCadFunc.addActionListener(this);
 
-		JButton btnCadQuestionario = new JButton("Question\u00E1rio");
+		btnCadQuestionario = new JButton("Question\u00E1rio");
 		btnCadQuestionario.setHorizontalAlignment(SwingConstants.LEFT);
 		btnCadQuestionario.setFont(new Font("Verdana", Font.BOLD, 12));
 		btnCadQuestionario.setBounds(57, 254, 185, 23);
 		contentPane.add(btnCadQuestionario);
+		btnCadQuestionario.addActionListener(this);
 
 		JPanel panel = new JPanel();
 		panel.setBounds(277, 11, 478, 514);
@@ -199,6 +202,16 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 
 			try {
 				new Departamento(idempresa).show();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			dispose();
+		}
+		if (acao.getSource() == btnCadQuestionario) {
+
+			try {
+				new CLIENTE_CadQuestionario(idempresa,idusuario).show();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
