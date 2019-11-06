@@ -1,7 +1,6 @@
 package BDConexao;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -9,17 +8,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.swing.JButton;
-
 import ViewClasses.CLIENTE_CadFunc;
+import ViewClasses.CLIENTE_CadQuestionario;
 
 public class Funcionario extends CLIENTE_CadFunc implements ActionListener {
 
 	Connection conexao = Conectar.getConnection();
 	String idempresa;
+	String idusuario;
 
-	public Funcionario(String empresa) throws SQLException {
-
+	public Funcionario(String empresa, String idusuario) throws SQLException {
+		this.idusuario = idusuario;
 		this.idempresa = empresa;
 
 		String sql = "select cnpj from empresa where id='" + empresa + "'";
@@ -36,6 +35,7 @@ public class Funcionario extends CLIENTE_CadFunc implements ActionListener {
 		btnCadQuestionario.addActionListener(this);
 		btnRelatrio.addActionListener(this);
 		btnSair.addActionListener(this);
+		btnMenuDepartamento.addActionListener(this);
 	}
 
 	private void Salvar() throws SQLException {
@@ -46,7 +46,7 @@ public class Funcionario extends CLIENTE_CadFunc implements ActionListener {
 		sql += idempresa + "','";
 		sql += getEmail() + "','";
 		sql += getiddpto(getSetor()) + "','";
-		sql += getTipoUser()+"','";
+		sql += getTipoUser() + "','";
 		sql += getStatus() + "','";
 		sql += getSenha() + "')";
 
@@ -85,6 +85,39 @@ public class Funcionario extends CLIENTE_CadFunc implements ActionListener {
 
 			Alterar();
 
+		}
+		if (acao.getSource() == btnCadFunc) {
+			try {
+				new Funcionario(idempresa, idusuario).show();
+				dispose();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			dispose();
+		}
+		if (acao.getSource() == btnMenuDepartamento) {
+
+			try {
+				new Departamento(idempresa, idusuario).show();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			dispose();
+		}
+		if (acao.getSource() == btnCadQuestionario) {
+
+			try {
+				new CLIENTE_CadQuestionario(idempresa, idusuario).show();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			dispose();
+		}
+		if (acao.getSource() == btnSair) {
+			dispose();
 		}
 	}
 
@@ -160,21 +193,19 @@ public class Funcionario extends CLIENTE_CadFunc implements ActionListener {
 					executasql(sql);
 				}
 				if (!"".equals(getStatus())) {
-					sql = "update usuario set status='" + getStatus()+ "'where email = '" + getEmail()
-							+ "'";
+					sql = "update usuario set status='" + getStatus() + "'where email = '" + getEmail() + "'";
 					executasql(sql);
 				}
 				if (!"".equals(getTipoUser())) {
-					sql = "update usuario set tipo='" + getTipoUser()+ "'where email = '" + getEmail()
-					+ "'";
-			executasql(sql);
-		}
+					sql = "update usuario set tipo='" + getTipoUser() + "'where email = '" + getEmail() + "'";
+					executasql(sql);
+				}
 
 				setRetorno("Colaborador Alterado com sucesso", Color.green);
 				setTxtEmail("");
 				setTxtSenha("");
 				setTxtNome("");
-				
+
 			} else {
 				setRetorno("CNPJ não encontrado", Color.red);
 

@@ -32,8 +32,9 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 	protected JButton btnCadFunc;
 	protected JButton btnMenuDepartamento;
 	private String idempresa = "";
-	private JButton btnCadQuestionario ;
+	private JButton btnCadQuestionario;
 	private String idusuario;
+	private JButton btnSair;
 
 	/**
 	 * Launch the application.
@@ -47,9 +48,9 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 	/**
 	 * Create the frame.
 	 */
-	public CLIENTE_Menu(String Nome, String Empresa, String idempresa,String idusuario) {
+	public CLIENTE_Menu(String Nome, String Empresa, String idempresa, String idusuario) {
 		this.idempresa = idempresa;
-		this.idusuario=idusuario;
+		this.idusuario = idusuario;
 		setTitle("BitWise - \u00C1rea do Cliente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -170,11 +171,13 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 		contentPane.add(btnMenuDepartamento);
 		btnMenuDepartamento.addActionListener(this);
 
-		JButton btnSair = new JButton("Sair");
+		btnSair = new JButton("Sair");
 		btnSair.setHorizontalAlignment(SwingConstants.LEFT);
 		btnSair.setFont(new Font("Verdana", Font.BOLD, 12));
 		btnSair.setBounds(57, 357, 185, 23);
 		contentPane.add(btnSair);
+		btnSair.addActionListener(this);
+
 
 		JLabel lblSair = new JLabel("");
 		lblSair.setIcon(new ImageIcon(CLIENTE_Menu.class.getResource("/img/iconsair.png")));
@@ -190,7 +193,7 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		if (acao.getSource() == btnCadFunc) {
 			try {
-				new Funcionario(idempresa).show();
+				new Funcionario(idempresa, idusuario).show();
 				dispose();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -201,7 +204,7 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 		if (acao.getSource() == btnMenuDepartamento) {
 
 			try {
-				new Departamento(idempresa).show();
+				new Departamento(idempresa, idusuario).show();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -211,13 +214,15 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 		if (acao.getSource() == btnCadQuestionario) {
 
 			try {
-				new CLIENTE_CadQuestionario(idempresa,idusuario).show();
+				new CLIENTE_CadQuestionario(idempresa, idusuario).show();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			dispose();
 		}
-
+		if (acao.getSource() == btnSair) {
+			dispose();
+		}
 	}
 }

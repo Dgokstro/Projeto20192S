@@ -11,9 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -38,6 +36,8 @@ import javax.swing.text.MaskFormatter;
 import com.mysql.jdbc.Statement;
 
 import BDConexao.Conectar;
+import BDConexao.Departamento;
+import BDConexao.Funcionario;
 
 public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 
@@ -68,6 +68,11 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 	private JLabel lblMensagemRetorno;
 	private String idempresa;
 	private String idusuario;
+	private JButton btnCadFunc;
+	private JButton btnCadQuestionario;
+	private JButton btnRelatorio;
+	private JButton btnMenuDepartamento;
+	private JButton btnSair;
 
 	public CLIENTE_CadQuestionario(String idempresa, String idusuario) throws SQLException {
 		this.idempresa = idempresa;
@@ -258,11 +263,12 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 		label_11.setBounds(27, 157, 73, 29);
 		pnPrincipal.add(label_11);
 
-		JButton btnCadFunc = new JButton("Cadastrar Funcion\u00E1rio");
+		btnCadFunc = new JButton("Cadastrar Funcion\u00E1rio");
 		btnCadFunc.setHorizontalAlignment(SwingConstants.LEFT);
 		btnCadFunc.setFont(new Font("Verdana", Font.BOLD, 12));
 		btnCadFunc.setBounds(57, 207, 185, 25);
 		pnPrincipal.add(btnCadFunc);
+		btnCadFunc.addActionListener(this);
 
 		JLabel lblCadFuncionario = new JLabel("");
 		lblCadFuncionario.setIcon(
@@ -277,17 +283,19 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 		lblQuestionario.setBounds(27, 243, 20, 25);
 		pnPrincipal.add(lblQuestionario);
 
-		JButton btnCadQuestionario = new JButton("Question\u00E1rio");
+		btnCadQuestionario = new JButton("Question\u00E1rio");
 		btnCadQuestionario.setHorizontalAlignment(SwingConstants.LEFT);
 		btnCadQuestionario.setFont(new Font("Verdana", Font.BOLD, 12));
 		btnCadQuestionario.setBounds(57, 245, 185, 23);
 		pnPrincipal.add(btnCadQuestionario);
+		btnCadQuestionario.addActionListener(this);
 
-		JButton btnRelatorio = new JButton("Relat\u00F3rio");
+		btnRelatorio = new JButton("Relat\u00F3rio");
 		btnRelatorio.setHorizontalAlignment(SwingConstants.LEFT);
 		btnRelatorio.setFont(new Font("Verdana", Font.BOLD, 12));
 		btnRelatorio.setBounds(57, 279, 185, 23);
 		pnPrincipal.add(btnRelatorio);
+		btnRelatorio.addActionListener(this);
 
 		JLabel lblRelatorio = new JLabel("");
 		lblRelatorio.setIcon(
@@ -301,17 +309,19 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 		lblMenuDepartamento.setBounds(27, 313, 20, 25);
 		pnPrincipal.add(lblMenuDepartamento);
 
-		JButton btnMenuDepartamento = new JButton("Departamento");
+		btnMenuDepartamento = new JButton("Departamento");
 		btnMenuDepartamento.setHorizontalAlignment(SwingConstants.LEFT);
 		btnMenuDepartamento.setFont(new Font("Verdana", Font.BOLD, 12));
 		btnMenuDepartamento.setBounds(57, 313, 185, 23);
 		pnPrincipal.add(btnMenuDepartamento);
+		btnMenuDepartamento.addActionListener(this);
 
 		JButton btnSair = new JButton("Sair");
 		btnSair.setHorizontalAlignment(SwingConstants.LEFT);
 		btnSair.setFont(new Font("Verdana", Font.BOLD, 12));
 		btnSair.setBounds(57, 347, 185, 23);
 		pnPrincipal.add(btnSair);
+		btnSair.addActionListener(this);
 
 		JLabel lblSair = new JLabel("");
 		lblSair.setIcon(new ImageIcon(CLIENTE_CadQuestionario.class.getResource("/img/iconsair.png")));
@@ -370,7 +380,7 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 
 	}
 
-	public void addDpto(String empresa) throws SQLException {
+	private void addDpto(String empresa) throws SQLException {
 		String sql = "select descricao,id from departamento where empresa='" + empresa + "'";
 		PreparedStatement tabela = conexao.prepareStatement(sql);
 		ResultSet resultado = tabela.executeQuery();
@@ -380,7 +390,7 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 
 	}
 
-	public MaskFormatter Mascara(String Mascara) {
+	private MaskFormatter Mascara(String Mascara) {
 
 		MaskFormatter F_Mascara = new MaskFormatter();
 		try {
@@ -392,10 +402,10 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 		return F_Mascara;
 	}
 
-	public void Gravar() throws SQLException, ParseException {
+	private void Gravar() throws SQLException, ParseException {
 		int idquestionario;
 		String sql;
-		if (table.getRowCount() > 0) {
+		if (table.getRowCount() > 0 && !txtDescricao.getText().equals("")) {
 			sql = "insert into questionario_dados (usuario,descricao,status,usuariosolicitante,dataincio,sigilo,datafinal,departamento) values ('";
 			sql += idusuario + "','";
 			sql += txtDescricao.getText() + "','0','";
@@ -429,7 +439,7 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 				keys.next();
 				idquestionario = keys.getInt(1);
 				gravaItens(idquestionario);
-				lblMensagemRetorno.setText("Colaborador cadastrado com sucesso ID = " + idquestionario);
+				lblMensagemRetorno.setText("Questionario cadastrado com sucesso ID = " + idquestionario);
 				lblMensagemRetorno.setForeground(Color.green);
 				txtDescricao.setText("");
 				txtDataInicio.setText("");
@@ -439,7 +449,7 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 				lblMensagemRetorno.setText(e.getMessage());
 				lblMensagemRetorno.setForeground(Color.red);
 			}
-		}else {
+		} else {
 			JOptionPane.showMessageDialog(pnTable, "Preencha todos os campos");
 		}
 
@@ -524,6 +534,39 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
+		if (acao.getSource() == btnCadFunc) {
+			try {
+				new Funcionario(idempresa, idusuario).show();
+				dispose();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			dispose();
+		}
+		if (acao.getSource() == btnMenuDepartamento) {
+
+			try {
+				new Departamento(idempresa, idusuario).show();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			dispose();
+		}
+		if (acao.getSource() == btnCadQuestionario) {
+
+			try {
+				new CLIENTE_CadQuestionario(idempresa, idusuario).show();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			dispose();
+		}
+		if (acao.getSource() == btnSair) {
+			dispose();
 		}
 	}
 }

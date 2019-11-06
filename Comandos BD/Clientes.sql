@@ -8,6 +8,6 @@ create table usuario(
     senha varchar (20),
     tipo int,
     departamento int,
-    usuario varchar(60)
+    nome varchar(60)
 
 );
