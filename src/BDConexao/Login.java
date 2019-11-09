@@ -37,7 +37,7 @@ public class Login extends ViewTelaLogin implements ActionListener {
 		String user = "";
 		try {
 			String sql;
-			sql = "select a.tipo,a.nome,b.nome as empresa,b.id as idempresa,a.id as idusuario from usuario a inner join empresa b on a.empresa=b.id where a.email= '" + getUsuario() + "' and a.senha='" + getSenha()
+			sql = "select a.tipo,a.nome,b.nome as empresa,b.id as idempresa,a.id as idusuario from usuario a left join empresa b on a.empresa=b.id where a.email= '" + getUsuario() + "' and a.senha='" + getSenha()
 					+ "'";
 			// sql = inserir comandos
 			PreparedStatement tabela = conexao.prepareStatement(sql);
