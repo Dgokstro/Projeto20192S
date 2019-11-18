@@ -362,13 +362,7 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 		txtPergunta.requestFocus();
 	}
 
-//	public static void main(String[] args) {
-//		CLIENTE_CadQuestionario tela = new CLIENTE_CadQuestionario();
-//		tela.show();
-//
-//		tela.setVisible(true);
-//
-//	}
+
 
 	private void listaSolicitante() throws SQLException {
 		String sql = "select email from usuario where empresa='" + idempresa + "' and tipo = '3'";
@@ -401,30 +395,26 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 		}
 		return F_Mascara;
 	}
+	
+
 
 	private void Gravar() throws SQLException, ParseException {
 		int idquestionario;
 		String sql;
-		if (table.getRowCount() > 0 && !txtDescricao.getText().equals("")) {
-			sql = "insert into questionario_dados (usuario,descricao,status,usuariosolicitante,dataincio,sigilo,datafinal,departamento) values ('";
+		
+		if (table.getRowCount() > 0 && !txtDescricao.getText().equals("")&& validardata()) {
+			sql = "insert into questionario_dados (usuario,descricao,status,usuariosolicitante,datainicio,sigilo,datafinal,departamento) values ('";
 			sql += idusuario + "','";
-			sql += txtDescricao.getText() + "','0','";
+			sql += txtDescricao.getText() + "'," + getstatus() + ",'";
 			sql += getusuariosolicitante() + "','";
 
-			if (getdata(txtDataInicio.getText()).equals("")) {
-				sql += getdata(new Date().toString());
-			} else {
-				sql += getdata(txtDataInicio.getText()) + "','";
-			}
+			sql += getdata(txtDataInicio.getText()) + "','";
 
 			sql += comboVisibilidade.getSelectedIndex() + "','";
 
-			if (getdata(txtDataFim.getText()).equals("")) {
-				if (getdata(txtDataInicio.getText()).equals("")) {
-					sql += getdata(new Date().toString()) + "','";
-				} else {
-					sql += getdata(txtDataInicio.getText()) + "','";
-				}
+			if (txtDataFim.getText().equals("  /  /    ")) {
+				sql += getdata(txtDataInicio.getText()) + "','";
+
 			} else {
 				sql += getdata(txtDataFim.getText()) + "','";
 			}
@@ -450,7 +440,7 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 				lblMensagemRetorno.setForeground(Color.red);
 			}
 		} else {
-			JOptionPane.showMessageDialog(pnTable, "Preencha todos os campos");
+			JOptionPane.showMessageDialog(pnTable, "Preencha todos os campos corretamente");
 		}
 
 	}
@@ -492,15 +482,14 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 
 	private String getdata(String data) throws ParseException {
 		if (data.equals("  /  /    ")) {
-			return "";
+			Date d = new Date();
+			String formato = new SimpleDateFormat("yyyy/MM/dd").format(d);
+			return formato;
 		} else {
 
 			Date d;
 			d = (new SimpleDateFormat("dd'/'MM'/'yyyy").parse(data));
 			String formato = new SimpleDateFormat("yyyy/MM/dd").format(d);
-			// txtDataInicio.setText(new SimpleDateFormat("dd'/'MM'/'yyyy").format(new
-			// Date(System.currentTimeMillis())));
-			System.out.println(formato);
 			return formato;
 		}
 	}
@@ -518,7 +507,14 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 			tabela.executeUpdate();
 		}
 
+		limpaTabela();
 	}
+	
+	   public void limpaTabela(){
+		   while (table.getModel().getRowCount() > 0)
+			   ((DefaultTableModel) table.getModel()).removeRow(0);
+
+	    }
 
 	@Override
 	public void actionPerformed(ActionEvent acao) {
@@ -527,6 +523,7 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 		if (acao.getSource() == btnGravar) {
 			try {
 				Gravar();
+
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -568,5 +565,38 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 		if (acao.getSource() == btnSair) {
 			dispose();
 		}
+	}
+
+	public int getstatus() {
+		int status = 0;
+
+		if (comboBoxSolicitante.getSelectedIndex() == 0) {
+			status = 1;
+		}
+
+		return status;
+
+	}
+
+	public boolean validardata() throws ParseException {
+		
+		boolean datavalida= false;
+		
+		Date inicio = new SimpleDateFormat("yyyy/MM/dd").parse(getdata(txtDataInicio.getText()));
+		Date datafinal;
+		
+		if (txtDataFim.getText().equals("  /  /    ")) {
+			datafinal=new SimpleDateFormat("yyyy/MM/dd").parse(getdata(txtDataInicio.getText()));
+
+		} else {
+			datafinal=new SimpleDateFormat("yyyy/MM/dd").parse(getdata(txtDataFim.getText()));
+		}
+		
+		if(inicio.compareTo(datafinal)<1) {
+			datavalida=true;
+		}
+		
+		return datavalida;
+		
 	}
 }

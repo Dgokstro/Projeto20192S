@@ -31,6 +31,7 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	protected JButton btnCadFunc;
 	protected JButton btnMenuDepartamento;
+	protected JButton btnRelatrio;
 	private String idempresa = "";
 	private JButton btnCadQuestionario;
 	private String idusuario;
@@ -146,7 +147,7 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 		lblCad_Questionario.setBounds(27, 252, 20, 25);
 		contentPane.add(lblCad_Questionario);
 
-		JButton btnRelatrio = new JButton("Relat\u00F3rio");
+		btnRelatrio = new JButton("Relat\u00F3rio");
 		btnRelatrio.setHorizontalAlignment(SwingConstants.LEFT);
 		btnRelatrio.setFont(new Font("Verdana", Font.BOLD, 12));
 		btnRelatrio.setBounds(57, 288, 185, 23);
@@ -186,6 +187,7 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 
 		setResizable(false);
 		setLocationRelativeTo(null);
+		btnRelatrio.addActionListener(this);
 	}
 
 	@Override
@@ -215,6 +217,16 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 
 			try {
 				new CLIENTE_CadQuestionario(idempresa, idusuario).show();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			dispose();
+		}
+		if (acao.getSource() == btnRelatrio) {
+
+			try {
+				new CLIENTE_Relatorio(idempresa, idusuario).show();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
