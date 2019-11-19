@@ -10,6 +10,7 @@ import java.sql.SQLException;
 
 import ViewClasses.CLIENTE_CadFunc;
 import ViewClasses.CLIENTE_CadQuestionario;
+import ViewClasses.CLIENTE_Relatorio;
 
 public class Funcionario extends CLIENTE_CadFunc implements ActionListener {
 
@@ -33,7 +34,7 @@ public class Funcionario extends CLIENTE_CadFunc implements ActionListener {
 		btnLozalizar.addActionListener(this);
 		btnCadFunc.addActionListener(this);
 		btnCadQuestionario.addActionListener(this);
-		btnRelatrio.addActionListener(this);
+		btnRelatorio.addActionListener(this);
 		btnSair.addActionListener(this);
 		btnMenuDepartamento.addActionListener(this);
 	}
@@ -110,6 +111,16 @@ public class Funcionario extends CLIENTE_CadFunc implements ActionListener {
 
 			try {
 				new CLIENTE_CadQuestionario(idempresa, idusuario).show();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			dispose();
+		}
+		if (acao.getSource() == btnRelatorio) {
+
+			try {
+				new CLIENTE_Relatorio(idempresa, idusuario).show();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

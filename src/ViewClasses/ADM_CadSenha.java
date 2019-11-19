@@ -7,25 +7,35 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.UIManager;
 import java.awt.Font;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.border.LineBorder;
+
+import BDConexao.Conectar;
+
 import javax.swing.JTable;
 
 public class ADM_CadSenha extends JFrame {
 
+	Connection conexao = Conectar.getConnection();
 	private JPanel contentPane;
 
 	protected String getCNPJ() {
-		return txtCNPJ.getText();
+		return comboBoxCNPJ.getSelectedItem().toString();
 	}
 
 	protected String getNome() {
@@ -48,18 +58,9 @@ public class ADM_CadSenha extends JFrame {
 	protected JButton btnSalvar;
 	protected JButton btnSair;
 	private JLabel lblMensagemRetorno;
-	/**
-	 * Launch the application.
-	 * 
-	 * public static void main(String[] args) { EventQueue.invokeLater(new
-	 * Runnable() { public void run() { try { ADM_CadSenha frame = new
-	 * ADM_CadSenha(); frame.setVisible(true); } catch (Exception e) {
-	 * e.printStackTrace(); } } }); }
-	 */
-	/**
-	 * Create the frame.
-	 */
-	public ADM_CadSenha() {
+	private JComboBox comboBoxCNPJ;
+
+	public ADM_CadSenha() throws SQLException {
 		setTitle("BitWise - Cadastramento Senha");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -166,10 +167,16 @@ public class ADM_CadSenha extends JFrame {
 		lblSenha.setBounds(34, 210, 80, 20);
 		panel_1.add(lblSenha);
 
-		txtCNPJ = new JTextField();
-		txtCNPJ.setBounds(118, 88, 246, 30);
-		panel_1.add(txtCNPJ);
-		txtCNPJ.setColumns(10);
+		
+		comboBoxCNPJ = new JComboBox();
+		comboBoxCNPJ.setBounds(118, 88, 246, 30);
+		panel_1.add(comboBoxCNPJ);
+		comboBoxCNPJ.setModel(new DefaultComboBoxModel());
+		listaCnpj();
+//		txtCNPJ = new JTextField();
+//		txtCNPJ.setBounds(118, 88, 246, 30);
+//		panel_1.add(txtCNPJ);
+//		txtCNPJ.setColumns(10);
 
 		txtNome = new JTextField();
 		txtNome.setColumns(10);
@@ -221,5 +228,15 @@ public class ADM_CadSenha extends JFrame {
 	public void setRetorno(String msg, Color cor) {
 		this.lblMensagemRetorno.setText(msg);
 		this.lblMensagemRetorno.setForeground(cor);
+	}
+	
+	private void listaCnpj() throws SQLException {
+		String sql = "select * from empresa";
+		PreparedStatement tabela = conexao.prepareStatement(sql);
+		ResultSet resultado = tabela.executeQuery();
+		while (resultado.next()) {
+			comboBoxCNPJ.addItem(resultado.getString("CNPJ"));
+		}
+
 	}
 }

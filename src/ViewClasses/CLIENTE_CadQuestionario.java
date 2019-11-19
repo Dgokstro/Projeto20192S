@@ -562,6 +562,16 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 			}
 			dispose();
 		}
+		if (acao.getSource() == btnRelatorio) {
+
+			try {
+				new CLIENTE_Relatorio(idempresa, idusuario).show();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			dispose();
+		}
 		if (acao.getSource() == btnSair) {
 			dispose();
 		}

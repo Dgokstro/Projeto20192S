@@ -30,6 +30,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import BDConexao.Conectar;
+import BDConexao.Departamento;
+import BDConexao.Funcionario;
 
 public class CLIENTE_Relatorio extends JFrame implements ActionListener {
 
@@ -330,8 +332,8 @@ public class CLIENTE_Relatorio extends JFrame implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnConsultar) {
+	public void actionPerformed(ActionEvent acao) {
+		if (acao.getSource() == btnConsultar) {
 			int[] linhas = table.getSelectedRows();
 			DefaultTableModel dtm = (DefaultTableModel) table.getModel();
 			for (int i = (linhas.length - 1); i >= 0; --i) {
@@ -344,6 +346,36 @@ public class CLIENTE_Relatorio extends JFrame implements ActionListener {
 				}
 			}
 
+		}
+		if (acao.getSource() == btnCadFunc) {
+			try {
+				new Funcionario(idempresa, idusuario).show();
+				dispose();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			dispose();
+		}
+		if (acao.getSource() == btnMenuDepartamento) {
+
+			try {
+				new Departamento(idempresa, idusuario).show();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			dispose();
+		}
+		if (acao.getSource() == btnCadQuestionario) {
+
+			try {
+				new CLIENTE_CadQuestionario(idempresa, idusuario).show();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			dispose();
 		}
 
 	}
@@ -367,270 +399,3 @@ public class CLIENTE_Relatorio extends JFrame implements ActionListener {
 	}
 }
 
-//	public void Eventos() {
-//		btAdicionar.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				if (txtPergunta.getText().equals("")) {
-//					JOptionPane.showMessageDialog(pnTable, "Preencha todos os campos");
-//					return;
-//				}
-//
-//				DefaultTableModel dtm = (DefaultTableModel) table.getModel();
-//				dtm.addRow(new Object[] { txtPergunta.getText() });
-//				limpar();
-//
-//			}
-//		});
-//		btRemover.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				int[] linhas = table.getSelectedRows();
-//				DefaultTableModel dtm = (DefaultTableModel) table.getModel();
-//				for (int i = (linhas.length - 1); i >= 0; --i) {
-//					dtm.removeRow(linhas[i]);
-//
-//				}
-//
-//			}
-//		});
-//
-//	}
-//
-//	private void limpar() {
-//		txtPergunta.setText("");
-//		txtPergunta.requestFocus();
-//	}
-
-//	private void listaSolicitante() throws SQLException {
-//		String sql = "select email from usuario where empresa='" + idempresa + "' and tipo = '3'";
-//		PreparedStatement tabela = conexao.prepareStatement(sql);
-//		ResultSet resultado = tabela.executeQuery();
-//		while (resultado.next()) {
-//			comboBoxSolicitante.addItem(resultado.getString("email"));
-//		}
-//
-//	}
-
-//	private void addDpto(String empresa) throws SQLException {
-//		String sql = "select descricao,id from departamento where empresa='" + empresa + "'";
-//		PreparedStatement tabela = conexao.prepareStatement(sql);
-//		ResultSet resultado = tabela.executeQuery();
-//		while (resultado.next()) {
-//			comboBoxSetor.addItem(resultado.getString("descricao"));
-//		}
-//
-//	}
-
-//	private MaskFormatter Mascara(String Mascara) {
-//
-//		MaskFormatter F_Mascara = new MaskFormatter();
-//		try {
-//			F_Mascara.setMask(Mascara); // Atribui a mascara
-//			F_Mascara.setPlaceholderCharacter(' '); // Caracter para preencimento
-//		} catch (Exception excecao) {
-//			excecao.printStackTrace();
-//		}
-//		return F_Mascara;
-//	}
-
-//	private void Gravar() throws SQLException, ParseException {
-//		int idquestionario;
-//		String sql;
-//		
-//		if (table.getRowCount() > 0 && !txtDescricao.getText().equals("")&& validardata()) {
-//			sql = "insert into questionario_dados (usuario,descricao,status,usuariosolicitante,datainicio,sigilo,datafinal,departamento) values ('";
-//			sql += idusuario + "','";
-//			sql += txtDescricao.getText() + "'," + getstatus() + ",'";
-//			sql += getusuariosolicitante() + "','";
-//
-//			sql += getdata(txtDataInicio.getText()) + "','";
-//
-//			sql += comboVisibilidade.getSelectedIndex() + "','";
-//
-//			if (txtDataFim.getText().equals("  /  /    ")) {
-//				sql += getdata(txtDataInicio.getText()) + "','";
-//
-//			} else {
-//				sql += getdata(txtDataFim.getText()) + "','";
-//			}
-//
-//			sql += getDepartamento() + "')";
-//
-//			PreparedStatement tabela;
-//			try {
-//				tabela = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-//				tabela.executeUpdate();
-//				ResultSet keys = tabela.getGeneratedKeys();
-//				keys.next();
-//				idquestionario = keys.getInt(1);
-//				gravaItens(idquestionario);
-//				lblMensagemRetorno.setText("Questionario cadastrado com sucesso ID = " + idquestionario);
-//				lblMensagemRetorno.setForeground(Color.green);
-//				txtDescricao.setText("");
-//				txtDataInicio.setText("");
-//				txtDataFim.setText("");
-//
-//			} catch (SQLException e) {
-//				lblMensagemRetorno.setText(e.getMessage());
-//				lblMensagemRetorno.setForeground(Color.red);
-//			}
-//		} else {
-//			JOptionPane.showMessageDialog(pnTable, "Preencha todos os campos corretamente");
-//		}
-//
-//	}
-
-//	private String getusuariosolicitante() throws SQLException {
-//
-//		if (comboBoxSolicitante.getSelectedIndex() == 0) {
-//			return "0";
-//		} else {
-//
-//			String solicitante;
-//			solicitante = comboBoxSolicitante.getSelectedItem().toString();
-//
-//			String sql = "select id from usuario where empresa='" + idempresa + "' and email = '" + solicitante + "'";
-//			PreparedStatement tabela = conexao.prepareStatement(sql);
-//			ResultSet resultado = tabela.executeQuery();
-//			resultado.next();
-//			return resultado.getString("id");
-//		}
-//
-//	}
-
-//	private String getDepartamento() throws SQLException {
-//		if (comboBoxSetor.getSelectedIndex() == 0) {
-//			return "0";
-//		} else {
-//
-//			String dpto;
-//			dpto = comboBoxSetor.getSelectedItem().toString();
-//
-//			String sql = "select id from departamento where empresa='" + idempresa + "' and descricao = '" + dpto + "'";
-//			PreparedStatement tabela = conexao.prepareStatement(sql);
-//			ResultSet resultado = tabela.executeQuery();
-//			resultado.next();
-//			return resultado.getString("id");
-//		}
-//
-//	}
-
-//	private String getdata(String data) throws ParseException {
-//		if (data.equals("  /  /    ")) {
-//			Date d = new Date();
-//			String formato = new SimpleDateFormat("yyyy/MM/dd").format(d);
-//			return formato;
-//		} else {
-//
-//			Date d;
-//			d = (new SimpleDateFormat("dd'/'MM'/'yyyy").parse(data));
-//			String formato = new SimpleDateFormat("yyyy/MM/dd").format(d);
-//			return formato;
-//		}
-//	}
-
-//	public void gravaItens(int idquestionario) throws SQLException {
-//		for (int linha = 0; linha < table.getRowCount(); linha++) {
-//			String sql;
-//
-//			sql = "insert into questionario_itens (questionario,sequencia,descricao,tipo) values (";
-//			sql += idquestionario + ",";
-//			sql += (linha + 1) + ",'";
-//			sql += table.getValueAt(linha, 0);
-//			sql += "',0)";
-//			PreparedStatement tabela = conexao.prepareStatement(sql);
-//			tabela.executeUpdate();
-//		}
-//
-//		limpaTabela();
-//	}
-//	
-//	   public void limpaTabela(){
-//		   while (table.getModel().getRowCount() > 0)
-//			   ((DefaultTableModel) table.getModel()).removeRow(0);
-//
-//	    }
-
-//	@Override
-//	public void actionPerformed(ActionEvent acao) {
-//		// TODO Auto-generated method stub
-//
-//		if (acao.getSource() == btnGravar) {
-//			try {
-//				Gravar();
-//
-//			} catch (SQLException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (ParseException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
-//		if (acao.getSource() == btnCadFunc) {
-//			try {
-//				new Funcionario(idempresa, idusuario).show();
-//				dispose();
-//			} catch (SQLException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			dispose();
-//		}
-//		if (acao.getSource() == btnMenuDepartamento) {
-//
-//			try {
-//				new Departamento(idempresa, idusuario).show();
-//			} catch (SQLException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			dispose();
-//		}
-//		if (acao.getSource() == btnCadQuestionario) {
-//
-//			try {
-//				new CLIENTE_Relatorio(idempresa, idusuario).show();
-//			} catch (SQLException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			dispose();
-//		}
-//		if (acao.getSource() == btnSair) {
-//			dispose();
-//		}
-//	}
-
-//	public int getstatus() {
-//		int status = 0;
-//
-//		if (comboBoxSolicitante.getSelectedIndex() == 0) {
-//			status = 1;
-//		}
-//
-//		return status;
-//
-//	}
-
-//	public boolean validardata() throws ParseException {
-//		
-//		boolean datavalida= false;
-//		
-//		Date inicio = new SimpleDateFormat("yyyy/MM/dd").parse(getdata(txtDataInicio.getText()));
-//		Date datafinal;
-//		
-//		if (txtDataFim.getText().equals("  /  /    ")) {
-//			datafinal=new SimpleDateFormat("yyyy/MM/dd").parse(getdata(txtDataInicio.getText()));
-//
-//		} else {
-//			datafinal=new SimpleDateFormat("yyyy/MM/dd").parse(getdata(txtDataFim.getText()));
-//		}
-//		
-//		if(inicio.compareTo(datafinal)<1) {
-//			datavalida=true;
-//		}
-//		
-//		return datavalida;
-//		
-//	}
-//}

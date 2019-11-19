@@ -171,7 +171,12 @@ public class Cliente extends ADM_CadCliente implements ActionListener {
 			
 		}
 		if (acao.getSource() == btnCadSenha) {
-			new Senha().show();
+			try {
+				new Senha().show();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			dispose();
 		}
 		if (acao.getSource() == btnSair) {

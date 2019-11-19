@@ -18,8 +18,10 @@ import java.util.Date;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
+import javax.swing.text.MaskFormatter;
 import javax.swing.JTable;
 import javax.swing.JDesktopPane;
+import javax.swing.JFormattedTextField;
 import javax.swing.JInternalFrame;
 
 public class ADM_CadCliente extends JFrame {
@@ -90,12 +92,12 @@ public class ADM_CadCliente extends JFrame {
 		this.txtCNPJ.setText(txtEmail);
 	}
 
-	private JTextField txtCNPJ;
+	private JFormattedTextField txtCNPJ;
 	private JTextField txtEmpresa;
 	private JTextField txtEndereco;
 	private JTextField txtCidade;
-	private JTextField txtUF;
-	private JTextField txtTelefone;
+	private JFormattedTextField txtUF;
+	private JFormattedTextField txtTelefone;
 	private JTextField txtEmail;
 	protected JButton btnSalvar;
 	protected JButton btnSair;
@@ -252,7 +254,7 @@ public class ADM_CadCliente extends JFrame {
 
 		// Aqui começa o bloco de campos do formulário
 
-		txtCNPJ = new JTextField();
+		txtCNPJ = new JFormattedTextField(Mascara("###.###.###/####-##"));
 		txtCNPJ.setBounds(118, 88, 246, 30);
 		panel_1.add(txtCNPJ);
 		txtCNPJ.setColumns(10);
@@ -272,12 +274,12 @@ public class ADM_CadCliente extends JFrame {
 		txtCidade.setBounds(118, 207, 246, 30);
 		panel_1.add(txtCidade);
 
-		txtUF = new JTextField();
+		txtUF = new JFormattedTextField(Mascara("??"));
 		txtUF.setColumns(10);
 		txtUF.setBounds(118, 246, 246, 30);
 		panel_1.add(txtUF);
 
-		txtTelefone = new JTextField();
+		txtTelefone = new JFormattedTextField(Mascara("(##)#####-####"));
 		txtTelefone.setColumns(10);
 		txtTelefone.setBounds(118, 284, 246, 30);
 		panel_1.add(txtTelefone);
@@ -324,5 +326,16 @@ public class ADM_CadCliente extends JFrame {
 
 		setResizable(false);
 		setLocationRelativeTo(null);
+	}
+	private MaskFormatter Mascara(String Mascara) {
+
+		MaskFormatter F_Mascara = new MaskFormatter();
+		try {
+			F_Mascara.setMask(Mascara); // Atribui a mascara
+			F_Mascara.setPlaceholderCharacter(' '); // Caracter para preencimento
+		} catch (Exception excecao) {
+			excecao.printStackTrace();
+		}
+		return F_Mascara;
 	}
 }

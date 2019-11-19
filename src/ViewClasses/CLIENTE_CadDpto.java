@@ -94,7 +94,7 @@ public class CLIENTE_CadDpto extends JFrame {
 	protected JButton btnLozalizar;
 	protected JButton btnCadFunc;
 	protected JButton btnCadQuestionario;
-	protected JButton btnRelatrio;
+	protected JButton btnRelatorio;
 	protected JButton btnSair;
 	protected JButton btnMenuDepartamento;
 
@@ -297,11 +297,11 @@ public class CLIENTE_CadDpto extends JFrame {
 		lblRelatorio.setBounds(27, 287, 20, 25);
 		contentPane.add(lblRelatorio);
 
-		btnRelatrio = new JButton("Relat\u00F3rio");
-		btnRelatrio.setHorizontalAlignment(SwingConstants.LEFT);
-		btnRelatrio.setFont(new Font("Verdana", Font.BOLD, 12));
-		btnRelatrio.setBounds(57, 289, 185, 23);
-		contentPane.add(btnRelatrio);
+		btnRelatorio = new JButton("Relat\u00F3rio");
+		btnRelatorio.setHorizontalAlignment(SwingConstants.LEFT);
+		btnRelatorio.setFont(new Font("Verdana", Font.BOLD, 12));
+		btnRelatorio.setBounds(57, 289, 185, 23);
+		contentPane.add(btnRelatorio);
 		
 		JLabel lblMenuDepartamento = new JLabel("");
 		lblMenuDepartamento.setIcon(

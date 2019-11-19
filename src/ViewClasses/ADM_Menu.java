@@ -24,6 +24,7 @@ import javax.swing.JButton;
 import java.awt.Window.Type;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JLayeredPane;
 import javax.swing.JDesktopPane;
@@ -167,7 +168,12 @@ public class ADM_Menu extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent acao) {
 		// TODO Auto-generated method stub
 		if (acao.getSource() == btnCadastrarSenha) {
-			new Senha().show();
+			try {
+				new Senha().show();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			dispose();
 		}
 		if (acao.getSource() == btnCadastrarCliente) {

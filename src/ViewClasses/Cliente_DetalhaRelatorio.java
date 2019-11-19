@@ -192,13 +192,19 @@ public class Cliente_DetalhaRelatorio extends JFrame implements ActionListener {
 
 		resultado.next();
 
-		Date d = resultado.getDate("datafinal");
-		String dataquestionario = new SimpleDateFormat("dd/MM/yyyy").format(d);
-		lblDataFinal.setText("Data de encerramento da campanha: " + dataquestionario);
-		d = resultado.getDate("datainicio");
-		dataquestionario = new SimpleDateFormat("dd/MM/yyyy").format(d);
-		lblDataInicial.setText("Data de Inicio da campanha: " + dataquestionario);
-
+		Date dfinal = resultado.getDate("datafinal");
+		String dataquestionariofinal = new SimpleDateFormat("dd/MM/yyyy").format(dfinal);		
+		Date dinicio = resultado.getDate("datainicio");
+		String dataquestionarioinicio = new SimpleDateFormat("dd/MM/yyyy").format(dinicio);
+		
+		lblDataInicial.setText("Data de Inicio da campanha: " + dataquestionarioinicio);
+		
+		if(dataquestionariofinal.contentEquals(dataquestionarioinicio)) {
+		lblDataFinal.setText("Campanha nao possui data prevista para encerramento");
+		}else {
+		lblDataFinal.setText("Data de encerramento da campanha: " + dataquestionariofinal);	
+		}
+			
 		int usuarioSolicitante = resultado.getInt("UsuarioSolicitante");
 		int departamento = resultado.getInt("departamento");
 		Visibilidade = resultado.getInt("sigilo");

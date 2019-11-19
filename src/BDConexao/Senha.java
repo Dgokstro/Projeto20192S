@@ -14,7 +14,7 @@ public class Senha extends ADM_CadSenha implements ActionListener {
 	Connection conexao = Conectar.getConnection();
 	String status = Conectar.status;
 
-	public Senha() {
+	public Senha() throws SQLException {
 		super();
 		btnSalvar.addActionListener(this);
 		btnCadCliente.addActionListener(this);
