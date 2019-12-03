@@ -25,13 +25,13 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.border.LineBorder;
 
-import BDConexao.Conectar;
+import BDConexao.ControlConectar;
 
 import javax.swing.JTable;
 
-public class ADM_CadSenha extends JFrame {
+public class ViewCadSenha extends JFrame {
 
-	Connection conexao = Conectar.getConnection();
+	Connection conexao = ControlConectar.getConnection();
 	private JPanel contentPane;
 
 	protected String getCNPJ() {
@@ -60,7 +60,7 @@ public class ADM_CadSenha extends JFrame {
 	private JLabel lblMensagemRetorno;
 	private JComboBox comboBoxCNPJ;
 
-	public ADM_CadSenha() throws SQLException {
+	public ViewCadSenha() throws SQLException {
 		setTitle("BitWise - Cadastramento Senha");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -85,7 +85,7 @@ public class ADM_CadSenha extends JFrame {
 		contentPane.add(labelRodape);
 
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(ADM_CadSenha.class.getResource("/img/logo-bitwise-reduzido.png")));
+		label.setIcon(new ImageIcon(ViewCadSenha.class.getResource("/img/logo-bitwise-reduzido.png")));
 		label.setBounds(27, 21, 200, 102);
 		contentPane.add(label);
 
@@ -97,7 +97,7 @@ public class ADM_CadSenha extends JFrame {
 
 		JLabel lblCadCliente = new JLabel("");
 		lblCadCliente.setFont(new Font("Verdana", Font.BOLD, 14));
-		lblCadCliente.setIcon(new ImageIcon(ADM_CadSenha.class.getResource("/img/icon-adm_menu_cad_cliente.png")));
+		lblCadCliente.setIcon(new ImageIcon(ViewCadSenha.class.getResource("/img/icon-adm_menu_cad_cliente.png")));
 		lblCadCliente.setBounds(27, 207, 20, 34);
 		contentPane.add(lblCadCliente);
 
@@ -136,7 +136,7 @@ public class ADM_CadSenha extends JFrame {
 		JLabel label_2 = new JLabel("");
 		label_2.setBounds(125, 25, 25, 34);
 		panel_1.add(label_2);
-		label_2.setIcon(new ImageIcon(ADM_CadSenha.class.getResource("/img/icon-adm_menu_cad_senha-azul.png")));
+		label_2.setIcon(new ImageIcon(ViewCadSenha.class.getResource("/img/icon-adm_menu_cad_senha-azul.png")));
 		label_2.setFont(new Font("Verdana", Font.BOLD, 14));
 
 		JLabel lblCnpj = new JLabel("CNPJ:");
@@ -206,7 +206,7 @@ public class ADM_CadSenha extends JFrame {
 		panel_1.add(lblMensagemRetorno);
 
 		JLabel lblCadSenha = new JLabel("");
-		lblCadSenha.setIcon(new ImageIcon(ADM_CadSenha.class.getResource("/img/icon-adm_menu_cad_senha-azul.png")));
+		lblCadSenha.setIcon(new ImageIcon(ViewCadSenha.class.getResource("/img/icon-adm_menu_cad_senha-azul.png")));
 		lblCadSenha.setBounds(27, 252, 20, 25);
 		contentPane.add(lblCadSenha);
 
@@ -217,7 +217,7 @@ public class ADM_CadSenha extends JFrame {
 		contentPane.add(btnSair);
 
 		JLabel lblSair = new JLabel("");
-		lblSair.setIcon(new ImageIcon(ADM_CadSenha.class.getResource("/img/iconsair.png")));
+		lblSair.setIcon(new ImageIcon(ViewCadSenha.class.getResource("/img/iconsair.png")));
 		lblSair.setBounds(27, 288, 20, 25);
 		contentPane.add(lblSair);
 

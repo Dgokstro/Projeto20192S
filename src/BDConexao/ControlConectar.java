@@ -8,23 +8,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
-
-import javax.imageio.stream.FileImageInputStream;
-public abstract class Conectar {
+public abstract class ControlConectar {
 	public static String status="";
 	static Connection cn = null;
 	public static Connection getConnection() {
 		
 		try{
-			/*
-			String banco   = "projeto20192s";
-			String url     = "jdbc:mysql://localhost:3306/" + banco;
-			String usuario = "dev";
-			String senha   = "030294";
-			*/
+			
 			Properties props = loadProperties();
 			String url= props.getProperty("dburl");
-			//Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
+			
 			cn = DriverManager.getConnection( url ,props );
 			
 			status = "Conexão Aberta";
@@ -40,7 +33,7 @@ public abstract class Conectar {
 			try {
 				cn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				
 				status =  e.getMessage();
 			}
 		}
@@ -60,6 +53,4 @@ public abstract class Conectar {
 }
 
 
-/* catch(ClassNotFoundException e){
-	status =  e.getMessage();
-}*/
+

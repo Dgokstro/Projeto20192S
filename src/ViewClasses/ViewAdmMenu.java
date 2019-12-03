@@ -7,8 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import BDConexao.Cliente;
-import BDConexao.Senha;
+import BDConexao.ControlCliente;
+import BDConexao.ControlSenha;
 
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -29,7 +29,7 @@ import java.sql.SQLException;
 import javax.swing.JLayeredPane;
 import javax.swing.JDesktopPane;
 
-public class ADM_Menu extends JFrame implements ActionListener {
+public class ViewAdmMenu extends JFrame implements ActionListener {
 
 	
 	
@@ -59,7 +59,7 @@ public class ADM_Menu extends JFrame implements ActionListener {
 	/**
 	 * Create the frame.
 	 */
-	public ADM_Menu(String Nome) {
+	public ViewAdmMenu(String Nome) {
 		setTitle("BitWise - \u00C1rea do Administrador");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -84,7 +84,7 @@ public class ADM_Menu extends JFrame implements ActionListener {
 		contentPane.add(labelRodape);
 
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(ADM_Menu.class.getResource("/img/logo-bitwise-reduzido.png")));
+		label.setIcon(new ImageIcon(ViewAdmMenu.class.getResource("/img/logo-bitwise-reduzido.png")));
 		label.setBounds(27, 21, 200, 102);
 		contentPane.add(label);
 
@@ -96,7 +96,7 @@ public class ADM_Menu extends JFrame implements ActionListener {
 
 		JLabel lblCad_Cliente = new JLabel("");
 		lblCad_Cliente.setFont(new Font("Verdana", Font.BOLD, 14));
-		lblCad_Cliente.setIcon(new ImageIcon(ADM_Menu.class.getResource("/img/icon-adm_menu_cad_cliente.png")));
+		lblCad_Cliente.setIcon(new ImageIcon(ViewAdmMenu.class.getResource("/img/icon-adm_menu_cad_cliente.png")));
 		lblCad_Cliente.setBounds(27, 207, 20, 34);
 		contentPane.add(lblCad_Cliente);
 
@@ -132,7 +132,7 @@ public class ADM_Menu extends JFrame implements ActionListener {
 		panel.add(lblEscolhaOpcao);
 
 		JLabel label_2 = new JLabel("");
-		label_2.setIcon(new ImageIcon(ADM_Menu.class.getResource("/img/engrenagem.png")));
+		label_2.setIcon(new ImageIcon(ViewAdmMenu.class.getResource("/img/engrenagem.png")));
 		label_2.setBounds(167, 181, 150, 162);
 		panel.add(label_2);
 
@@ -143,7 +143,7 @@ public class ADM_Menu extends JFrame implements ActionListener {
 		panel.add(lblSuporte);
 
 		JLabel lblCadSenha = new JLabel("");
-		lblCadSenha.setIcon(new ImageIcon(ADM_Menu.class.getResource("/img/icon-adm_menu_cad_senha.png")));
+		lblCadSenha.setIcon(new ImageIcon(ViewAdmMenu.class.getResource("/img/icon-adm_menu_cad_senha.png")));
 		lblCadSenha.setBounds(27, 252, 20, 25);
 		contentPane.add(lblCadSenha);
 
@@ -155,7 +155,7 @@ public class ADM_Menu extends JFrame implements ActionListener {
 		btnSair.addActionListener(this);
 
 		JLabel lblSair = new JLabel("");
-		lblSair.setIcon(new ImageIcon(ADM_Menu.class.getResource("/img/iconsair.png")));
+		lblSair.setIcon(new ImageIcon(ViewAdmMenu.class.getResource("/img/iconsair.png")));
 		lblSair.setBounds(27, 288, 20, 25);
 		contentPane.add(lblSair);
 
@@ -169,7 +169,7 @@ public class ADM_Menu extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		if (acao.getSource() == btnCadastrarSenha) {
 			try {
-				new Senha().show();
+				new ControlSenha().show();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -177,7 +177,7 @@ public class ADM_Menu extends JFrame implements ActionListener {
 			dispose();
 		}
 		if (acao.getSource() == btnCadastrarCliente) {
-			new Cliente().show();
+			new ControlCliente().show();
 			dispose();
 		}
 		if (acao.getSource() == btnSair) {

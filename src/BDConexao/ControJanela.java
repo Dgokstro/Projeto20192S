@@ -5,9 +5,9 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
-public class Janela extends JFrame {
+public class ControJanela extends JFrame {
 
-	public Janela(String titulo,Dimension tamanho){
+	public ControJanela(String titulo,Dimension tamanho){
 		setTitle(titulo);//Definir título
 		setSize(tamanho);//Definir tamanho
 		

@@ -8,15 +8,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import ViewClasses.ADM_CadCliente;
-import ViewClasses.ADM_CadSenha;
+import ViewClasses.ViewCadCliente;
+import ViewClasses.ViewCadSenha;
 
-public class Cliente extends ADM_CadCliente implements ActionListener {
+public class ControlCliente extends ViewCadCliente implements ActionListener {
 
-	Connection conexao = Conectar.getConnection();
-	String status = Conectar.status;
+	Connection conexao = ControlConectar.getConnection();
+	String status = ControlConectar.status;
 
-	public Cliente() {
+	public ControlCliente() {
 		super();
 		btnSalvar.addActionListener(this);
 		btnAlterar.addActionListener(this);
@@ -172,7 +172,7 @@ public class Cliente extends ADM_CadCliente implements ActionListener {
 		}
 		if (acao.getSource() == btnCadSenha) {
 			try {
-				new Senha().show();
+				new ControlSenha().show();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

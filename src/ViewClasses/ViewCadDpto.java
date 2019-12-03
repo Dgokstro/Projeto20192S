@@ -19,7 +19,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-public class CLIENTE_CadDpto extends JFrame {
+public class ViewCadDpto extends JFrame {
 
 	private JPanel contentPane;
 
@@ -108,7 +108,7 @@ public class CLIENTE_CadDpto extends JFrame {
 	 * catch (Exception e) { e.printStackTrace(); } } }); }
 	 */
 
-	public CLIENTE_CadDpto() {
+	public ViewCadDpto() {
 		setTitle("BitWise - Cadastramento Funcion\u00E1rio");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -133,7 +133,7 @@ public class CLIENTE_CadDpto extends JFrame {
 		contentPane.add(labelRodape);
 
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(CLIENTE_CadDpto.class.getResource("/img/logo-bitwise-reduzido.png")));
+		label.setIcon(new ImageIcon(ViewCadDpto.class.getResource("/img/logo-bitwise-reduzido.png")));
 		label.setBounds(27, 21, 200, 102);
 		contentPane.add(label);
 
@@ -166,7 +166,7 @@ public class CLIENTE_CadDpto extends JFrame {
 		JLabel label_2 = new JLabel("");
 		label_2.setBounds(100, 25, 25, 34);
 		panel_1.add(label_2);
-		label_2.setIcon(new ImageIcon(CLIENTE_CadDpto.class.getResource("/img/icon-cliente_menu_cadfunc_azul.png")));
+		label_2.setIcon(new ImageIcon(ViewCadDpto.class.getResource("/img/icon-cliente_menu_cadfunc_azul.png")));
 		label_2.setFont(new Font("Verdana", Font.BOLD, 14));
 
 		JLabel lblEmpresa = new JLabel("Empresa:");
@@ -268,7 +268,7 @@ public class CLIENTE_CadDpto extends JFrame {
 
 		JLabel lblCadFuncionario = new JLabel("");
 		lblCadFuncionario
-				.setIcon(new ImageIcon(CLIENTE_CadDpto.class.getResource("/img/icon-cliente_menu_cadfunc_cinza.png")));
+				.setIcon(new ImageIcon(ViewCadDpto.class.getResource("/img/icon-cliente_menu_cadfunc_cinza.png")));
 		lblCadFuncionario.setFont(new Font("Verdana", Font.BOLD, 14));
 		lblCadFuncionario.setBounds(27, 217, 20, 25);
 		contentPane.add(lblCadFuncionario);
@@ -281,7 +281,7 @@ public class CLIENTE_CadDpto extends JFrame {
 
 		JLabel lblQuestionario = new JLabel("");
 		lblQuestionario.setIcon(
-				new ImageIcon(CLIENTE_CadDpto.class.getResource("/img/icon-cliente_menu_cadquestionario_cinza.png")));
+				new ImageIcon(ViewCadDpto.class.getResource("/img/icon-cliente_menu_cadquestionario_cinza.png")));
 		lblQuestionario.setBounds(27, 253, 20, 25);
 		contentPane.add(lblQuestionario);
 
@@ -293,7 +293,7 @@ public class CLIENTE_CadDpto extends JFrame {
 
 		JLabel lblRelatorio = new JLabel("");
 		lblRelatorio.setIcon(
-				new ImageIcon(CLIENTE_CadDpto.class.getResource("/img/icon-cliente_menu_relatorio_cinza.png")));
+				new ImageIcon(ViewCadDpto.class.getResource("/img/icon-cliente_menu_relatorio_cinza.png")));
 		lblRelatorio.setBounds(27, 287, 20, 25);
 		contentPane.add(lblRelatorio);
 
@@ -305,7 +305,7 @@ public class CLIENTE_CadDpto extends JFrame {
 		
 		JLabel lblMenuDepartamento = new JLabel("");
 		lblMenuDepartamento.setIcon(
-				new ImageIcon(CLIENTE_CadDpto.class.getResource("/img/icon-cliente_menu_cadquestionario_cinza.png")));
+				new ImageIcon(ViewCadDpto.class.getResource("/img/icon-cliente_menu_cadquestionario_cinza.png")));
 		lblMenuDepartamento.setBounds(27, 323, 20, 25);
 		contentPane.add(lblMenuDepartamento);
 
@@ -322,7 +322,7 @@ public class CLIENTE_CadDpto extends JFrame {
 		contentPane.add(btnSair);
 
 		JLabel lblSair = new JLabel("");
-		lblSair.setIcon(new ImageIcon(CLIENTE_CadDpto.class.getResource("/img/iconsair.png")));
+		lblSair.setIcon(new ImageIcon(ViewCadDpto.class.getResource("/img/iconsair.png")));
 		lblSair.setBounds(27, 357, 20, 25);
 		contentPane.add(lblSair);
 

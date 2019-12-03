@@ -8,16 +8,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import ViewClasses.CLIENTE_CadDpto;
-import ViewClasses.CLIENTE_CadQuestionario;
-import ViewClasses.CLIENTE_Relatorio;
+import ViewClasses.ViewCadDpto;
+import ViewClasses.ViewCadQuestionario;
+import ViewClasses.ViewRelatorio;
 
-public class Departamento extends CLIENTE_CadDpto implements ActionListener {
-	Connection conexao = Conectar.getConnection();
+public class ControlDepartamento extends ViewCadDpto implements ActionListener {
+	Connection conexao = ControlConectar.getConnection();
 	String idempresa;
 	String idusuario;
 
-	public Departamento(String empresa, String idusuario) throws SQLException {
+	public ControlDepartamento(String empresa, String idusuario) throws SQLException {
 		this.idusuario = idusuario;
 		String sql = "select cnpj from empresa where id='" + empresa + "'";
 		PreparedStatement tabela = conexao.prepareStatement(sql);
@@ -70,7 +70,7 @@ public class Departamento extends CLIENTE_CadDpto implements ActionListener {
 		}
 		if (acao.getSource() == btnCadFunc) {
 			try {
-				new Funcionario(idempresa, idusuario).show();
+				new ControlFuncionario(idempresa, idusuario).show();
 				dispose();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -81,7 +81,7 @@ public class Departamento extends CLIENTE_CadDpto implements ActionListener {
 		if (acao.getSource() == btnMenuDepartamento) {
 
 			try {
-				new Departamento(idempresa, idusuario).show();
+				new ControlDepartamento(idempresa, idusuario).show();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -91,7 +91,7 @@ public class Departamento extends CLIENTE_CadDpto implements ActionListener {
 		if (acao.getSource() == btnCadQuestionario) {
 
 			try {
-				new CLIENTE_CadQuestionario(idempresa, idusuario).show();
+				new ViewCadQuestionario(idempresa, idusuario).show();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -101,7 +101,7 @@ public class Departamento extends CLIENTE_CadDpto implements ActionListener {
 		if (acao.getSource() == btnRelatorio) {
 
 			try {
-				new CLIENTE_Relatorio(idempresa, idusuario).show();
+				new ViewRelatorio(idempresa, idusuario).show();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

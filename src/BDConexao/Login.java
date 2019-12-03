@@ -8,17 +8,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import ViewClasses.ADM_CadCliente;
-import ViewClasses.ADM_Menu;
-import ViewClasses.CLIENTE_Menu;
+import ViewClasses.ViewCadCliente;
+import ViewClasses.ViewAdmMenu;
+import ViewClasses.ViewClienteMenu;
 import ViewClasses.ViewTelaLogin;
 
 public class Login extends ViewTelaLogin implements ActionListener {
 	// Declaração dos componentes
 
-	Connection conexao = Conectar.getConnection();
+	Connection conexao = ControlConectar.getConnection();
 	// Linha obrigatória (Connection)
-	String status = Conectar.status;
+	String status = ControlConectar.status;
 	private String nome;
 	private String empresa;
 	private String idempresa;
@@ -71,13 +71,22 @@ public class Login extends ViewTelaLogin implements ActionListener {
 				if (ok.equals("1")) {
 					setLblBD("Usuário Administrador", Color.green);
 
-					new ADM_Menu(nome).show();
+					new ViewAdmMenu(nome).show();
 					dispose();
 				} else if (ok.equals("2")) {
 					setLblBD("Usuário Usuario mesmo", Color.blue);
 
-					new CLIENTE_Menu(nome,empresa,idempresa,idusuario).show();
+					new ViewClienteMenu(nome,empresa,idempresa,idusuario).show();
 					dispose();
+				} else if (ok.equals("4")) {
+					setLblBD("Usuário com acesso somente ao aplicativo", Color.red);
+
+					
+				} else if (ok.equals("3")) {
+					
+					new ViewClienteMenu(nome,empresa,idempresa,idusuario).show();
+					dispose();
+					
 				}
 
 			} else {

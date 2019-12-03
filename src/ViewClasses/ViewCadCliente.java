@@ -24,7 +24,7 @@ import javax.swing.JDesktopPane;
 import javax.swing.JFormattedTextField;
 import javax.swing.JInternalFrame;
 
-public class ADM_CadCliente extends JFrame {
+public class ViewCadCliente extends JFrame {
 
 	private JPanel contentPane;
 
@@ -118,7 +118,7 @@ public class ADM_CadCliente extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ADM_CadCliente() {
+	public ViewCadCliente() {
 		setTitle("BitWise - Cadastramento Cliente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -143,7 +143,7 @@ public class ADM_CadCliente extends JFrame {
 		contentPane.add(labelRodape);
 
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(ADM_CadCliente.class.getResource("/img/logo-bitwise-reduzido.png")));
+		label.setIcon(new ImageIcon(ViewCadCliente.class.getResource("/img/logo-bitwise-reduzido.png")));
 		label.setBounds(27, 21, 200, 102);
 		contentPane.add(label);
 
@@ -156,7 +156,7 @@ public class ADM_CadCliente extends JFrame {
 		JLabel lblCad_Cliente = new JLabel("");
 		lblCad_Cliente.setFont(new Font("Verdana", Font.BOLD, 14));
 		lblCad_Cliente
-				.setIcon(new ImageIcon(ADM_CadCliente.class.getResource("/img/icon-adm_menu_cad_cliente-azul.png")));
+				.setIcon(new ImageIcon(ViewCadCliente.class.getResource("/img/icon-adm_menu_cad_cliente-azul.png")));
 		lblCad_Cliente.setBounds(27, 207, 20, 34);
 		contentPane.add(lblCad_Cliente);
 
@@ -167,7 +167,7 @@ public class ADM_CadCliente extends JFrame {
 		contentPane.add(btnCadCliente);
 
 		JLabel lblCadSenha = new JLabel("");
-		lblCadSenha.setIcon(new ImageIcon(ADM_CadCliente.class.getResource("/img/icon-adm_menu_cad_senha.png")));
+		lblCadSenha.setIcon(new ImageIcon(ViewCadCliente.class.getResource("/img/icon-adm_menu_cad_senha.png")));
 		lblCadSenha.setBounds(27, 252, 20, 25);
 		contentPane.add(lblCadSenha);
 
@@ -200,7 +200,7 @@ public class ADM_CadCliente extends JFrame {
 		JLabel label_2 = new JLabel("");
 		label_2.setBounds(106, 25, 25, 34);
 		panel_1.add(label_2);
-		label_2.setIcon(new ImageIcon(ADM_CadCliente.class.getResource("/img/icon-adm_menu_cad_cliente-azul.png")));
+		label_2.setIcon(new ImageIcon(ViewCadCliente.class.getResource("/img/icon-adm_menu_cad_cliente-azul.png")));
 		label_2.setFont(new Font("Verdana", Font.BOLD, 14));
 
 		JLabel lblCnpj = new JLabel("CNPJ:");
@@ -320,7 +320,7 @@ public class ADM_CadCliente extends JFrame {
 		contentPane.add(btnSair);
 
 		JLabel lblSair = new JLabel("");
-		lblSair.setIcon(new ImageIcon(ADM_CadCliente.class.getResource("/img/iconsair.png")));
+		lblSair.setIcon(new ImageIcon(ViewCadCliente.class.getResource("/img/iconsair.png")));
 		lblSair.setBounds(27, 288, 20, 25);
 		contentPane.add(lblSair);
 

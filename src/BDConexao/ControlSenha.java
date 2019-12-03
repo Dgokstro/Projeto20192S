@@ -8,13 +8,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import ViewClasses.ADM_CadSenha;
+import ViewClasses.ViewCadSenha;
 
-public class Senha extends ADM_CadSenha implements ActionListener {
-	Connection conexao = Conectar.getConnection();
-	String status = Conectar.status;
+public class ControlSenha extends ViewCadSenha implements ActionListener {
+	Connection conexao = ControlConectar.getConnection();
+	String status = ControlConectar.status;
 
-	public Senha() throws SQLException {
+	public ControlSenha() throws SQLException {
 		super();
 		btnSalvar.addActionListener(this);
 		btnCadCliente.addActionListener(this);
@@ -69,7 +69,7 @@ public class Senha extends ADM_CadSenha implements ActionListener {
 	public void actionPerformed(ActionEvent acao) {
 		// TODO Auto-generated method stub
 		if (acao.getSource() == btnCadCliente) {
-			new Cliente().show();
+			new ControlCliente().show();
 			dispose();
 		}
 		if (acao.getSource() == btnSair) {

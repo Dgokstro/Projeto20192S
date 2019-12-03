@@ -8,17 +8,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import ViewClasses.CLIENTE_CadFunc;
-import ViewClasses.CLIENTE_CadQuestionario;
-import ViewClasses.CLIENTE_Relatorio;
+import ViewClasses.ViewCadFunc;
+import ViewClasses.ViewCadQuestionario;
+import ViewClasses.ViewRelatorio;
 
-public class Funcionario extends CLIENTE_CadFunc implements ActionListener {
+public class ControlFuncionario extends ViewCadFunc implements ActionListener {
 
-	Connection conexao = Conectar.getConnection();
+	Connection conexao = ControlConectar.getConnection();
 	String idempresa;
 	String idusuario;
 
-	public Funcionario(String empresa, String idusuario) throws SQLException {
+	public ControlFuncionario(String empresa, String idusuario) throws SQLException {
 		this.idusuario = idusuario;
 		this.idempresa = empresa;
 
@@ -89,7 +89,7 @@ public class Funcionario extends CLIENTE_CadFunc implements ActionListener {
 		}
 		if (acao.getSource() == btnCadFunc) {
 			try {
-				new Funcionario(idempresa, idusuario).show();
+				new ControlFuncionario(idempresa, idusuario).show();
 				dispose();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -100,7 +100,7 @@ public class Funcionario extends CLIENTE_CadFunc implements ActionListener {
 		if (acao.getSource() == btnMenuDepartamento) {
 
 			try {
-				new Departamento(idempresa, idusuario).show();
+				new ControlDepartamento(idempresa, idusuario).show();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -110,7 +110,7 @@ public class Funcionario extends CLIENTE_CadFunc implements ActionListener {
 		if (acao.getSource() == btnCadQuestionario) {
 
 			try {
-				new CLIENTE_CadQuestionario(idempresa, idusuario).show();
+				new ViewCadQuestionario(idempresa, idusuario).show();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -120,7 +120,7 @@ public class Funcionario extends CLIENTE_CadFunc implements ActionListener {
 		if (acao.getSource() == btnRelatorio) {
 
 			try {
-				new CLIENTE_Relatorio(idempresa, idusuario).show();
+				new ViewRelatorio(idempresa, idusuario).show();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

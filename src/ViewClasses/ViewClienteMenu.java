@@ -7,9 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import BDConexao.Departamento;
-import BDConexao.Funcionario;
-import BDConexao.Senha;
+import BDConexao.ControlDepartamento;
+import BDConexao.ControlFuncionario;
+import BDConexao.ControlSenha;
 
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -26,7 +26,7 @@ import java.util.Date;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 
-public class CLIENTE_Menu extends JFrame implements ActionListener {
+public class ViewClienteMenu extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	protected JButton btnCadFunc;
@@ -37,19 +37,9 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 	private String idusuario;
 	private JButton btnSair;
 
-	/**
-	 * Launch the application.
-	 * 
-	 * public static void main(String[] args) { EventQueue.invokeLater(new
-	 * Runnable() { public void run() { try { CLIENTE_Menu frame = new
-	 * CLIENTE_Menu(); frame.setVisible(true); } catch (Exception e) {
-	 * e.printStackTrace(); } } }); }
-	 */
 
-	/**
-	 * Create the frame.
-	 */
-	public CLIENTE_Menu(String Nome, String Empresa, String idempresa, String idusuario) {
+	public ViewClienteMenu(String Nome, String Empresa, String idempresa, String idusuario) {
+		
 		this.idempresa = idempresa;
 		this.idusuario = idusuario;
 		setTitle("BitWise - \u00C1rea do Cliente");
@@ -76,7 +66,7 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 		contentPane.add(labelRodape);
 
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(CLIENTE_Menu.class.getResource("/img/logo-bitwise-reduzido.png")));
+		label.setIcon(new ImageIcon(ViewClienteMenu.class.getResource("/img/logo-bitwise-reduzido.png")));
 		label.setBounds(27, 21, 200, 102);
 		contentPane.add(label);
 
@@ -89,7 +79,7 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 		JLabel lblCad_Cliente = new JLabel("");
 		lblCad_Cliente.setFont(new Font("Verdana", Font.BOLD, 14));
 		lblCad_Cliente
-				.setIcon(new ImageIcon(CLIENTE_Menu.class.getResource("/img/icon-cliente_menu_cadfunc_cinza.png")));
+				.setIcon(new ImageIcon(ViewClienteMenu.class.getResource("/img/icon-cliente_menu_cadfunc_cinza.png")));
 		lblCad_Cliente.setBounds(27, 216, 20, 25);
 		contentPane.add(lblCad_Cliente);
 
@@ -125,7 +115,7 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 		panel.add(lblEscolhaOpcao);
 
 		JLabel lbl_engrenagem = new JLabel("");
-		lbl_engrenagem.setIcon(new ImageIcon(CLIENTE_Menu.class.getResource("/img/engrenagem.png")));
+		lbl_engrenagem.setIcon(new ImageIcon(ViewClienteMenu.class.getResource("/img/engrenagem.png")));
 		lbl_engrenagem.setBounds(167, 181, 150, 162);
 		panel.add(lbl_engrenagem);
 
@@ -143,7 +133,7 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 
 		JLabel lblCad_Questionario = new JLabel("");
 		lblCad_Questionario.setIcon(
-				new ImageIcon(CLIENTE_Menu.class.getResource("/img/icon-cliente_menu_cadquestionario_cinza.png")));
+				new ImageIcon(ViewClienteMenu.class.getResource("/img/icon-cliente_menu_cadquestionario_cinza.png")));
 		lblCad_Questionario.setBounds(27, 252, 20, 25);
 		contentPane.add(lblCad_Questionario);
 
@@ -155,13 +145,13 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 
 		JLabel lblRelatorio = new JLabel("");
 		lblRelatorio
-				.setIcon(new ImageIcon(CLIENTE_Menu.class.getResource("/img/icon-cliente_menu_relatorio_cinza.png")));
+				.setIcon(new ImageIcon(ViewClienteMenu.class.getResource("/img/icon-cliente_menu_relatorio_cinza.png")));
 		lblRelatorio.setBounds(27, 286, 20, 25);
 		contentPane.add(lblRelatorio);
 
 		JLabel lblMenuDepartamento = new JLabel("");
 		lblMenuDepartamento.setIcon(
-				new ImageIcon(CLIENTE_CadFunc.class.getResource("/img/icon-cliente_menu_cadquestionario_cinza.png")));
+				new ImageIcon(ViewCadFunc.class.getResource("/img/icon-cliente_menu_cadquestionario_cinza.png")));
 		lblMenuDepartamento.setBounds(27, 323, 20, 25);
 		contentPane.add(lblMenuDepartamento);
 
@@ -181,7 +171,7 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 
 
 		JLabel lblSair = new JLabel("");
-		lblSair.setIcon(new ImageIcon(CLIENTE_Menu.class.getResource("/img/iconsair.png")));
+		lblSair.setIcon(new ImageIcon(ViewClienteMenu.class.getResource("/img/iconsair.png")));
 		lblSair.setBounds(27, 357, 20, 25);
 		contentPane.add(lblSair);
 
@@ -195,7 +185,7 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		if (acao.getSource() == btnCadFunc) {
 			try {
-				new Funcionario(idempresa, idusuario).show();
+				new ControlFuncionario(idempresa, idusuario).show();
 				dispose();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -206,7 +196,7 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 		if (acao.getSource() == btnMenuDepartamento) {
 
 			try {
-				new Departamento(idempresa, idusuario).show();
+				new ControlDepartamento(idempresa, idusuario).show();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -216,7 +206,7 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 		if (acao.getSource() == btnCadQuestionario) {
 
 			try {
-				new CLIENTE_CadQuestionario(idempresa, idusuario).show();
+				new ViewCadQuestionario(idempresa, idusuario).show();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -226,7 +216,7 @@ public class CLIENTE_Menu extends JFrame implements ActionListener {
 		if (acao.getSource() == btnRelatrio) {
 
 			try {
-				new CLIENTE_Relatorio(idempresa, idusuario).show();
+				new ViewRelatorio(idempresa, idusuario).show();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

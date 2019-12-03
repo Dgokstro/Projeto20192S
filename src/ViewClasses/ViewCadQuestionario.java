@@ -35,13 +35,13 @@ import javax.swing.text.MaskFormatter;
 
 import com.mysql.jdbc.Statement;
 
-import BDConexao.Conectar;
-import BDConexao.Departamento;
-import BDConexao.Funcionario;
+import BDConexao.ControlConectar;
+import BDConexao.ControlDepartamento;
+import BDConexao.ControlFuncionario;
 
-public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
+public class ViewCadQuestionario extends JFrame implements ActionListener {
 
-	Connection conexao = Conectar.getConnection();
+	Connection conexao = ControlConectar.getConnection();
 	JPanel pnPrincipal, pnTable;
 	JButton btRemover, btAdicionar;
 	JScrollPane scrollTabel;
@@ -74,7 +74,7 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 	private JButton btnMenuDepartamento;
 	private JButton btnSair;
 
-	public CLIENTE_CadQuestionario(String idempresa, String idusuario) throws SQLException {
+	public ViewCadQuestionario(String idempresa, String idusuario) throws SQLException {
 		this.idempresa = idempresa;
 		this.idusuario = idusuario;
 		setTitle("BitWise - Cadastramento Questionario");
@@ -128,7 +128,7 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 
 		label_1 = new JLabel("");
 		label_1.setIcon(new ImageIcon(
-				CLIENTE_CadQuestionario.class.getResource("/img/icon-cliente_menu_cadquestionario_cinza.png")));
+				ViewCadQuestionario.class.getResource("/img/icon-cliente_menu_cadquestionario_cinza.png")));
 		label_1.setFont(new Font("Verdana", Font.BOLD, 14));
 		label_1.setBounds(137, 11, 25, 34);
 		panel_1.add(label_1);
@@ -245,7 +245,7 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 		panel.add(lblMensagemRetorno);
 
 		JLabel label_8 = new JLabel("");
-		label_8.setIcon(new ImageIcon(CLIENTE_CadQuestionario.class.getResource("/img/logo-bitwise-reduzido.png")));
+		label_8.setIcon(new ImageIcon(ViewCadQuestionario.class.getResource("/img/logo-bitwise-reduzido.png")));
 		label_8.setBounds(27, 23, 200, 102);
 		pnPrincipal.add(label_8);
 
@@ -272,14 +272,14 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 
 		JLabel lblCadFuncionario = new JLabel("");
 		lblCadFuncionario.setIcon(
-				new ImageIcon(CLIENTE_CadQuestionario.class.getResource("/img/icon-cliente_menu_cadfunc_cinza.png")));
+				new ImageIcon(ViewCadQuestionario.class.getResource("/img/icon-cliente_menu_cadfunc_cinza.png")));
 		lblCadFuncionario.setFont(new Font("Verdana", Font.BOLD, 14));
 		lblCadFuncionario.setBounds(27, 207, 20, 25);
 		pnPrincipal.add(lblCadFuncionario);
 
 		JLabel lblQuestionario = new JLabel("");
 		lblQuestionario.setIcon(
-				new ImageIcon(CLIENTE_CadQuestionario.class.getResource("/img/icon-cliente_menu_cadfunc_cinza.png")));
+				new ImageIcon(ViewCadQuestionario.class.getResource("/img/icon-cliente_menu_cadfunc_cinza.png")));
 		lblQuestionario.setBounds(27, 243, 20, 25);
 		pnPrincipal.add(lblQuestionario);
 
@@ -299,13 +299,13 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 
 		JLabel lblRelatorio = new JLabel("");
 		lblRelatorio.setIcon(
-				new ImageIcon(CLIENTE_CadQuestionario.class.getResource("/img/icon-cliente_menu_relatorio_cinza.png")));
+				new ImageIcon(ViewCadQuestionario.class.getResource("/img/icon-cliente_menu_relatorio_cinza.png")));
 		lblRelatorio.setBounds(27, 277, 20, 25);
 		pnPrincipal.add(lblRelatorio);
 
 		JLabel lblMenuDepartamento = new JLabel("");
 		lblMenuDepartamento
-				.setIcon(new ImageIcon(CLIENTE_CadQuestionario.class.getResource("/img/icon-departamento-cinza.png")));
+				.setIcon(new ImageIcon(ViewCadQuestionario.class.getResource("/img/icon-departamento-cinza.png")));
 		lblMenuDepartamento.setBounds(27, 313, 20, 25);
 		pnPrincipal.add(lblMenuDepartamento);
 
@@ -324,7 +324,7 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 		btnSair.addActionListener(this);
 
 		JLabel lblSair = new JLabel("");
-		lblSair.setIcon(new ImageIcon(CLIENTE_CadQuestionario.class.getResource("/img/iconsair.png")));
+		lblSair.setIcon(new ImageIcon(ViewCadQuestionario.class.getResource("/img/iconsair.png")));
 		lblSair.setBounds(27, 347, 20, 25);
 		pnPrincipal.add(lblSair);
 	}
@@ -534,7 +534,7 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 		}
 		if (acao.getSource() == btnCadFunc) {
 			try {
-				new Funcionario(idempresa, idusuario).show();
+				new ControlFuncionario(idempresa, idusuario).show();
 				dispose();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -545,7 +545,7 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 		if (acao.getSource() == btnMenuDepartamento) {
 
 			try {
-				new Departamento(idempresa, idusuario).show();
+				new ControlDepartamento(idempresa, idusuario).show();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -555,7 +555,7 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 		if (acao.getSource() == btnCadQuestionario) {
 
 			try {
-				new CLIENTE_CadQuestionario(idempresa, idusuario).show();
+				new ViewCadQuestionario(idempresa, idusuario).show();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -565,7 +565,7 @@ public class CLIENTE_CadQuestionario extends JFrame implements ActionListener {
 		if (acao.getSource() == btnRelatorio) {
 
 			try {
-				new CLIENTE_Relatorio(idempresa, idusuario).show();
+				new ViewRelatorio(idempresa, idusuario).show();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

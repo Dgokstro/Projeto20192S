@@ -14,21 +14,19 @@ import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-import BDConexao.Conectar;
+import BDConexao.ControlConectar;
 
-public class Cliente_DetalhaRelatorio extends JFrame implements ActionListener {
-	Connection conexao = Conectar.getConnection();
+public class ViewDetalhaRelatorio extends JFrame implements ActionListener {
+	Connection conexao = ControlConectar.getConnection();
 	JPanel pnPrincipal;
 	JTable table;
 	JScrollPane scrollTabel;
@@ -43,7 +41,7 @@ public class Cliente_DetalhaRelatorio extends JFrame implements ActionListener {
 	JButton btnDetalhar;
 	int Visibilidade;
 
-	public Cliente_DetalhaRelatorio(String idrelatorio) throws SQLException {
+	public ViewDetalhaRelatorio(String idrelatorio) throws SQLException {
 		this.idrelatorio = idrelatorio;
 		setTitle("BitWise - Relatorios");
 		setBounds(100, 100, 900, 700);
